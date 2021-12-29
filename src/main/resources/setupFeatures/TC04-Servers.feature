@@ -17,28 +17,28 @@ Feature: To test the functionality of Servers in Environment Menu
     Then Check schedulerTracker
     Then Check updaterServer
     Then Check emailServer
-    Then Check ReportEventProducerServer
-    Then Check ReportGeneratorServer
     
     #"SFTP Servers"
-    Then Check SFTPDownloadServer	
-    Then Check SFTPUploadServer
+    Then Check NPCI_Upload_Server
+    Then Check NPCI_Download_Server
+    Then Check File_Router_Server
     
-    #"File Processor Servers"
-    Then Check FileReadServer
-    Then Check FileValidateServer
-    Then Check PfmsBatchQueueServer
-    Then Check MainFilePayCreationServer
-    Then Check FutureRolloverServer
-    Then Check FileExpiryServer
+    #"Mandate Servers"
+    Then Check MMS_InFile_Server
+    Then Check MMS_InProcess_Server
+    Then Check MMS_OutFileCreate_Server
     
-    #"Enrollment Servers"
-    Then Check FileEnrolmentMatcherServer
-    Then Check DscEnrollementServer
+    #"DBTL Servers"
+    Then Check DBTL_InFile_Server
+    Then Check DBTL_InProcess_Server
+    Then Check DBTL_Verification_Server
+    Then Check DBTL_OutFileCreate_Server
     
-    #"Producer Servers"
-    Then Check GpsReQueueingServer
-    Then Check InitAckProducerServer
+    #"CBDT Servers"
+    Then Check CBDT_InFile_Server
+    Then Check CBDT_InProcess_Server
+    Then Check CBDT_AccountVerification_Server
+    Then Check CBDT_OutFileCreate_Server
     
     #"ACH Servers"
     Then Check NACH_InFile_Server
@@ -46,56 +46,60 @@ Feature: To test the functionality of Servers in Environment Menu
     Then Check NACH_OutProcess_Server
     Then Check NACH_OutFileCreate_Server
     
-    #MISC Servers
-    Then Check FileStatusUpdateServer	
-    Then Check DISCExpiryAlertServer
+    #Corporate Servers
+    Then Check Corporate_InFile_Server	
+    Then Check Corporate_InProcess_Server
+    Then Check LIC_INFile_Server
+    Then Check SCHM_Segrigate_Server
     
-    #ACK NACK Servers
-    Then Check ReceiptAckServer	
-    Then Check InitAckConsumerServer
-    Then Check SuccAckServer
-    Then Check RejectAckServer
+    #ReportServer Servers
+    Then Check AutoMisServer	
+    Then Check H2HMMSServer
+    Then Check H2HFileServerRouter
+    Then Check MandateRepresentServer
+    Then Check TransactionRepresentServer
+    
+    #ROUTER Servers
+    Then Check GpsFileProgressServer
+    Then Check GpsPaymentProgressServer
+    Then Check ChargePostingServer
+    Then Check CorporateFundingServer
+    Then Check FileMarkCompleteServer
+    Then Check FilePostingMarkCompleteServer
     
     #Posting Servers
-    Then Check MainPostingServer
-    Then Check DupRevPostingServer
-    Then Check PoolToSettBatchPostingServer
-    Then Check PoolToAgencyBatchPostingServer
-    Then Check SettToPoolBatchPostingServer
+    Then Check Finacle_Posting_Server
+    Then Check GpsReQueueingServer
+    Then Check IpaymentReQueueingServer
+    Then Check Inward_Debit_Posting_Server
+    Then Check Inward_Credit_Posting_Server
+    Then Check Inward_Debit_RePosting_Server
+    Then Check Inward_Credit_RePosting_Server
+    Then Check Inward_Debit_ReffralPost_Server
+    Then Check Inward_Credit_ReffralPost_Server
     
-    #ONUS Servers
-    Then Check OnUsPaymentProcessServer
-    Then Check OnusPostingServer
+    #Alert Servers
+    Then Check Mandate_SMS_Alerts_Server
+    Then Check Mandate_EMAIL_Alerts_Server
+    Then Check Payment_SMS_Alerts_Server
+    Then Check Payment_EMAIL_Alerts_Server
+    Then Check PaymentPosting_Alert_Server
     
-    #NEFT Servers
-    Then Check NeftPaymentProcessServer
+    #ESIGN Servers
+    Then Check ESIGNMMSInFileServer
+    Then Check ESIGNMMSVerificationServer
     
-    #ACH Servers
-    Then Check AchPaymentProcessServer
-    Then Check AchOutputServer
-    Then Check AchResponseReaderServer
-    Then Check AchResponseProcessServer
+    #MMS API Servers
+    Then Check APIMandateValidateServer
     
-    #APBS Servers
-    Then Check ApbsPaymentProcessServer
-    Then Check ApbsOutputServer
-    Then Check ApbsResponseReaderServer
-    Then Check ApbsResponseProcessServer
-    Then Check AadhaarVaultGetReferenceServer
-    Then Check AadhaarVaultForHistoryPaymentsServer
+    #JARVIS Servers
+    Then Check JARVISFileProcessServer
+    Then Check JARVISFileCreatorServer
     
-    #AV Servers
-    Then Check CpsmsAVFileRequestServer
-    Then Check CpsmsAVProcessingServer
-    Then Check AVResponseGenerationServer
-    Then Check AVAckReadServer
+    #PGP Servers
+    Then Check NACH_FileEncryption_Server
+    Then Check NACH_FileDecryption_Server
     
-    #SFMS Servers
-    Then Check NeftOutputServer
-    
-    #REPORT Servers
-    Then Check ReportEventProducerServer
-    Then Check ReportGeneratorServer
     
     
     

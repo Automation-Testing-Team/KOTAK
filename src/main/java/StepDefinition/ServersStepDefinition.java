@@ -1,11 +1,11 @@
 package StepDefinition;
 
 import org.openqa.selenium.WebDriver;
-import COM.KOTAKPFMS.QA.FACTORY.DriverFactory;
-import COM.KOTAKPFMS.QA.PAGES.EnvironmentPage;
-import COM.KOTAKPFMS.QA.PAGES.HomePage;
-import COM.KOTAKPFMS.QA.PAGES.LoginPage;
-import COM.KOTAKPFMS.QA.UTIL.ElementUtil;
+import COM.KOTAK.QA.FACTORY.DriverFactory;
+import COM.KOTAK.QA.PAGES.EnvironmentPage;
+import COM.KOTAK.QA.PAGES.HomePage;
+import COM.KOTAK.QA.PAGES.LoginPage;
+import COM.KOTAK.QA.UTIL.ElementUtil;
 import io.cucumber.java.en.Then;
 
 /**

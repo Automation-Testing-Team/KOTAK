@@ -1,0 +1,19 @@
+2021-12-28 14:56:09,048  INFO [main] LoginPage:58 - Advanced button clicked
+2021-12-28 14:56:12,114  INFO [main] LoginPage:61 - ProceedLink clicked
+2021-12-28 14:56:15,505  INFO [main] LoginPage:64 - Accept button clicked
+2021-12-28 14:56:15,568  INFO [main] LoginPage:66 - Username entered
+2021-12-28 14:56:15,615  INFO [main] LoginPage:68 - Password entered
+2021-12-28 14:56:31,428  INFO [main] LoginPage:70 - Login button clicked
+2021-12-28 14:56:31,451  INFO [main] LoginPage:86 - Login Successful
+2021-12-28 14:56:48,462  INFO [main] ProfilePage:244 - Cancel button is working fine for Profile-->Add Screen
+2021-12-28 14:56:49,040  INFO [main] ProfilePage:254 - Reset button is working fine for Profile-->Add Screen
+2021-12-28 14:56:52,808  INFO [main] ProfilePage:285 - Validation message is displayed properly for Checkboxes
+2021-12-28 14:56:56,866  INFO [main] ProfilePage:244 - Cancel button is working fine for Profile-->Add Screen
+2021-12-28 14:56:57,560  INFO [main] ProfilePage:254 - Reset button is working fine for Profile-->Add Screen
+2021-12-28 14:57:01,734  INFO [main] ProfilePage:283 - Validation message is displayed properly for Invalid Profile Name
+2021-12-28 14:57:07,688  INFO [main] ProfilePage:244 - Cancel button is working fine for Profile-->Add Screen
+2021-12-28 14:57:08,547  INFO [main] ProfilePage:254 - Reset button is working fine for Profile-->Add Screen
+2021-12-28 14:57:13,291  INFO [main] ProfilePage:287 - Duplicate Record Found. Record With Profile Checker1 Already Exists
+2021-12-28 14:57:17,103  INFO [main] ProfilePage:244 - Cancel button is working fine for Profile-->Add Screen
+2021-12-28 14:57:17,623  INFO [main] ProfilePage:254 - Reset button is working fine for Profile-->Add Screen
+2021-12-28 14:57:25,251  INFO [main] ProfilePage:298 - Record With Profile Name Checker2 Added Successfully

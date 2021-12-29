@@ -1,15 +1,13 @@
 package AppHooks;
 
 import java.util.Properties;
-import org.apache.log4j.Logger;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import COM.KOTAKPFMS.QA.FACTORY.DriverFactory;
-import COM.KOTAKPFMS.QA.PAGES.HomePage;
-import COM.KOTAKPFMS.QA.PAGES.LoginPage;
-import COM.KOTAKPFMS.QA.UTIL.ConfigReader;
-import cucumber.api.Scenario;
+import org.testng.log4testng.Logger;
+import COM.KOTAK.QA.FACTORY.DriverFactory;
+import COM.KOTAK.QA.PAGES.HomePage;
+import COM.KOTAK.QA.PAGES.LoginPage;
+import COM.KOTAK.QA.UTIL.ConfigReader;
+import io.cucumber.core.api.Scenario;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
@@ -65,14 +63,14 @@ public class Hooks {
 		driver.quit();
 	}
 
-	@After(order = 1)
-	public void tearDown(Scenario scenario) {
-
-		if (scenario.isFailed()) {
-			String screenshot = scenario.getName().replaceAll(" ", "_");
-			byte[] sourcepath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-			scenario.attach(sourcepath, "image/png", screenshot);
-		}
-	}
+//	@After(order = 1)
+//	public void tearDown(Scenario scenario) {
+//
+//		if (scenario.isFailed()) {
+//			String screenshot = scenario.getName().replaceAll(" ", "_");
+//			byte[] sourcepath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+//			scenario.attach(sourcepath, "image/png", screenshot);
+//		}
+//	}
 
 }
