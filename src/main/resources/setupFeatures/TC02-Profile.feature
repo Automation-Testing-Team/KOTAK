@@ -7,11 +7,11 @@ Feature: To test Profile functionality
   Scenario Outline: To Create Maker Profile
     Given user is on Administration menu and clicks on Profile menu and Add menu
     Then user enters the profile name using "<SheetName>" and clicks on checkboxes and ok button 
-    
+    #done
     Examples:
     |SheetName   |
     |Profile_Add |
-    
+     
      @TC_11_02_ApproveProfileScenario
   Scenario Outline: To Approve Maker Profile
     Given user goes to Administration and then Profile Approve menu
@@ -20,29 +20,15 @@ Feature: To test Profile functionality
     Examples:
     |SheetName       |
     |Profile_Approve | 
-    
-    
-  @TC_11_03_CheckerProfileScenario
-  Scenario Outline: To Create Checker Profile
-    Given user is on Administration menu and clicks on Profile menu and Add menu
-    Then user enters the profile name "<Profilename>" and clicks on all checkboxes and ok button 
-    Then user approves the record
-
-    Examples: 
-      | Profilename  | 
-      | Checker1		 |
-     	| Checker2		 | 
-     
-     
+       
      @TC_11_03_ProfileModifyScenario
      Scenario Outline: To Modify the profile 
-     Given user is on Administration menu and clicks on Profile menu and Modify menu and enters "<profilename>"
-     Then user modifies "<ProfileName>" the record and clicks on ok button
-     Then user approves the record
-     
+     Given user is on Administration menu and clicks on Profile menu and Modify menu
+     Then user modifies the record using "<SheetName>" and clicks on ok button
+     #done
      Examples:
-    |profilename |ProfileName	|
-    |		Maker1		 |  Maker2		|
+    |SheetName      |
+    |Profile_Modify | 
     
     @TC_11_04_ProfileRemoveScenario
     Scenario Outline: To Remove the profile

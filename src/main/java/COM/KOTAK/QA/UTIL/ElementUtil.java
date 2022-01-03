@@ -216,13 +216,15 @@ public class ElementUtil {
 					element.click();
 //					System.out.println("Checkbox is selected");
 				}
-			} else {
+			} else if (Checkbox.equals("DeSelect")){
 				if (element.isSelected() == true) {
 					element.click();
 //					System.out.println("Checkbox is deselected");
 				}else {
 //					System.out.println("Checkbox is already deselected");
 				}
+			}else {
+				
 			}
 		}
 	

@@ -75,18 +75,17 @@ public class ProfileStepDefinition {
 	}//end
 	
 	//----------Profile Modify/Repair------------//
-
-	@Given("User goes to Administration and then User selects Profile Modify\\/Repair menu")
-	public void user_goes_to_Administration_and_then_User_selects_Profile_Modify_Repair_menu() throws InterruptedException {
+	@Given("user is on Administration menu and clicks on Profile menu and Modify menu")
+	public void user_is_on_Administration_menu_and_clicks_on_Profile_menu_and_Modify_menu() throws InterruptedException {
 		elementUtil.GoToFrame("toc");
 		elementUtil.SHORT_TIMEOUT();
 		profilePage = homePage.ProfileModifyMenu();
-	}//end
+	}
 
-	@Then("User provides valid profile record details for Modify\\/Repair operation using {string}")
-	public void user_provides_valid_profile_record_details_for_Modify_Repair_operation_using(String sheetName) throws InvalidFormatException, InterruptedException, IOException {
-		profilePage.modifyRepairprofile(sheetName);
-	}//end
+	@Then("user modifies the record using {string} and clicks on ok button")
+	public void user_modifies_the_record_and_clicks_on_ok_button(String SheetName) throws InvalidFormatException, InterruptedException, IOException {
+		profilePage.modifyRepairprofile(SheetName);
+	}
 	
 	//----------Profile Remove------------//
 
