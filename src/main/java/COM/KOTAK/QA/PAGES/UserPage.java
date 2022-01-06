@@ -13,6 +13,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import COM.KOTAK.QA.UTIL.ElementUtil;
 import COM.KOTAK.QA.UTIL.FileReadUtils;
+import cucumber.api.java.et.Eeldades;
 
 /**
  * @Author -- Suvarna Prabhumatkari
@@ -30,6 +31,9 @@ public class UserPage {
 	// User Page Xpaths
 	@FindBy(name = "groupName")
 	WebElement groupNameDropdown;
+	
+	@FindBy(name = "content(groupId)")
+	WebElement groupDropdown;
 
 	@FindBy(name="group")
 	WebElement groupNameTxtField;
@@ -50,7 +54,7 @@ public class UserPage {
 	WebElement fullname;
 	
 	@FindBy(name="username")
-	WebElement userAdd_Modify_Screen_UserName;
+	WebElement username;
 
 	@FindBy(name = "locale")
 	WebElement language;
@@ -146,15 +150,6 @@ public class UserPage {
 	@FindBy(xpath="//td[@class='HeaderTitle']")
 	WebElement headerMsg;
 
-	@FindBy(xpath="//tr[@class='rowcoloreven']//td[8]")
-	WebElement screenRecord;
-
-	@FindBy(xpath="//*[@id=\"LNTablelistable\"]/tbody/tr[2]")
-	WebElement modifyScreenRecord;
-
-	@FindBy(xpath="//*[@id=\"LNTablelistable\"]/tbody/tr[2]")
-	WebElement removeScreenRecord;
-
 	// Cancel Error Msg Xpath
 	@FindBy(xpath = "//p[@class='errormessages']")
 	WebElement cancelErrorMsg;
@@ -176,9 +171,6 @@ public class UserPage {
 	WebElement userOk;
 
 	// Webelements for View user screen filter
-	@FindBy(name = "userName")
-	WebElement username;
-
 	@FindBy(xpath = "//*[@id=\"LNTablelistable\"]/tbody/tr[2]/td[2]")
 	WebElement viewUserName;
 
@@ -221,8 +213,8 @@ public class UserPage {
 	@FindBy(xpath = "//p[@class='messages']")
 	WebElement messages;
 
-	@FindBy(xpath="//*[@id=\"pageBody\"]/p")
-	WebElement listScreenErrorMessage;
+	@FindBy(xpath = "//p[@class='label']")
+	WebElement validateFilterMsg;
 
 	@FindBy(xpath = "//button[@type='button'][normalize-space()='OK']")
 	WebElement mainPageLogoutOkBtn;
@@ -232,9 +224,6 @@ public class UserPage {
 
 	@FindBy(xpath="//*[@id=\"LNTablelistable\"]/tbody/tr[2]/td[2]")
 	WebElement listScreenRecordUserName;
-
-	@FindBy(xpath="//*[@id=\"LNTablelistable\"]/tbody/tr[2]")
-	WebElement blockUnblockScreenRecord;
 
 	@FindBy(xpath="//*[@id=\"pageBody\"]/table/tbody/tr[2]/td/table[2]/tbody/tr/td/table/tbody/tr[1]/td/table/tbody/tr[2]/td[2]")
 	WebElement blockUnblockScreenUserName;
@@ -286,9 +275,9 @@ public class UserPage {
 			String ExpectedCancelBtnValidationMsg = "Operation Add new user was cancelled.";
 
 			if (ActualCancelBtnValidationMsg.trim().toString().equals(ExpectedCancelBtnValidationMsg.trim().toString())) {
-				log.info("Cancel button is working fine");
+				log.info("Cancel button is working fine for User-->Add Screen");
 			} else {
-				log.error("Cancel button is not working");
+				log.error("Cancel button is not working for User-->Add Screen");
 			}
 
 			elementUtil.selectDropDownByVisibleText(groupNameDropdown, GroupNameDropdown);
@@ -305,13 +294,13 @@ public class UserPage {
 			if (ActualUsernameFieldValidation.equals(ExpectedFieldValidation)
 					&& ActualFullnameFieldValidation.equals(ExpectedFieldValidation)
 					&& ActualProfileIdFieldValidation.equals(ExpectedFieldValidation)) {
-				log.info("Required fields are validated");
+				log.info("Required fields are validated for User-->Add Screen");
 			} else {
-				log.error("Required field validation failed");
+				log.error("Required field validation failed for User-->Add Screen");
 			}
 
 			elementUtil.SHORT_TIMEOUT();
-			elementUtil.enterText(userAdd_Modify_Screen_UserName, Username);
+			elementUtil.enterText(username, Username);
 			elementUtil.enterText(fullName, FullName);
 			elementUtil.selectDropDownByVisibleText(language, Language);
 			elementUtil.enterText(initials, Initials);
@@ -330,29 +319,32 @@ public class UserPage {
 			elementUtil.clickElement(btnOk);
 			elementUtil.TIMEOUT();
 
+			String ExistingMsg = "User already exists";
+			String ValidationMsg = "Operation Add new user executed successfully. "+GroupNameDropdown+"/"+Username+" placed in APPROVE queue.";
+			
 			try {
 
-				if(elementUtil.getText(errorMessages).trim().toString().equals("User already exists".trim().toString()))
+				if(elementUtil.getText(errorMessages).trim().toString().equals(ExistingMsg))
 				{
-					log.info("Duplicate Record Found Record With User Name " +Username+ " Already Exists");
+					log.info("Duplicate Record Found Record With User Name "+Username+" Already Exists");
 				}//end of if
 				else
 				{
 					log.error("Test Data Provided For User Add Operation Is Not As Valid Format");
 				}//end of else
 			} catch (NoSuchElementException e) {
+				elementUtil.SHORT_TIMEOUT();
 				elementUtil.clickElement(btnConfirm);
-				String userAddValidationMessage="Operation Add new user executed successfully. "+GroupNameDropdown+"/"+Username+ "placed in APPROVE queue.";
-				if(elementUtil.getText(messages).trim().toString().equals(userAddValidationMessage.trim().toString()))
+				elementUtil.SHORT_TIMEOUT();
+				if(elementUtil.getText(messages).equals(ValidationMsg))
 				{
-					log.info("Record With User Name " +Username+ " Added Successfully");
+					log.info("Record With User Name "+Username+" placed in Approve queue for Add Operation");
+				}else {
+					log.error("Record With User Name "+Username+" failed to add");
 				}
 			}//end of catch
-			elementUtil.SHORT_TIMEOUT();
 			elementUtil.clickElement(restartWorkFlowBtn);
-
 		}//end of for
-
 		//perform logout operation
 		elementUtil.SHORT_TIMEOUT();
 		logOutOperation();
@@ -362,93 +354,95 @@ public class UserPage {
 	public void approveUserRecord(String SheetName) throws InterruptedException, InvalidFormatException, IOException {
 		testData = fileReader.readSetupExcel(SheetName);
 		for (Map<String, String> map : testData) {
-			String GroupName = map.get("GroupName");
 			String Username = map.get("Username");
+			String IFSC = map.get("IFSC");
 			String FullName = map.get("Full Name");
-			String IFSC=map.get("IFSC Code(User Mapping Code)");
-			String operation=map.get("Operation");
-
-			elementUtil.SHORT_TIMEOUT();
+			String Group = map.get("Group");
+			String Operation=map.get("Operation");
 
 			//enter details on filter screen
-//			elementUtil.enterText(userName, Username);
-//			elementUtil.enterText(ifscCode, IFSC);
-//			elementUtil.enterText(fullname, FullName);
-//			elementUtil.enterText(groupNameTxtField,GroupName);
-
-//			elementUtil.clickElement(btnReset);
-//
-//			if (elementUtil.getText(userName).isEmpty() && elementUtil.getText(ifscCode).isEmpty() && elementUtil.getText(fullname).isEmpty() && elementUtil.getText(groupNameTxtField).isEmpty()) {
-//				log.info("Reset Button is working fine");
-//			} else {
-//				log.error("Reset Button is not working");
-//			}
-
-			//enter details on filter screen
+			elementUtil.clearText(userName);
 			elementUtil.enterText(userName, Username);
+			elementUtil.clearText(ifscCode);
 			elementUtil.enterText(ifscCode, IFSC);
+			elementUtil.clearText(fullname);
 			elementUtil.enterText(fullname, FullName);
-			elementUtil.enterText(groupNameTxtField,GroupName);
+			elementUtil.clearText(groupNameTxtField);
+			elementUtil.enterText(groupNameTxtField,Group);
+			elementUtil.clickElement(btnReset);
 
+			if (elementUtil.getText(userName).isEmpty() && elementUtil.getText(ifscCode).isEmpty() && elementUtil.getText(fullname).isEmpty() && elementUtil.getText(groupNameTxtField).isEmpty()) {
+				log.info("Reset Button is working fine for User-->Approve Screen");
+			} else {
+				log.error("Reset Button is not working for User-->Approve Screen");
+			}
+
+			//enter details on filter screen
+			elementUtil.clearText(userName);
+			elementUtil.enterText(userName, Username);
+			elementUtil.clearText(ifscCode);
+			elementUtil.enterText(ifscCode, IFSC);
+			elementUtil.clearText(fullname);
+			elementUtil.enterText(fullname, FullName);
+			elementUtil.clearText(groupNameTxtField);
+			elementUtil.enterText(groupNameTxtField,Group);
 			elementUtil.clickElement(okBtn);
 
-			try {
-				if(elementUtil.getText(errorMessages).trim().toString().equals("No items available for Approve operation given the search criteria".trim().toString()))
-				{
-					log.info("Record With Values [ " +Username+ " , " +IFSC+ " , " +FullName+ " , " +GroupName+ " ] Not Found For Approve Operation" );
-				}
-
-			} catch (NoSuchElementException e) {
-				try {
-					elementUtil.clickElement(screenRecord);
-					if(elementUtil.getText(errorMessages).trim().toString().equals("Operation Approve user changes failed to execute: User cannot approve own modification.".trim().toString()))
+			String CriteriaMsg = "No items available for Approve operation given the search criteria";
+			String ValidationMsg = "Operation Approve user changes failed to execute: User cannot approve own modification.";
+			String ApprovalMsg = "Operation Approve user changes executed successfully. "+Group+"/"+Username+" placed in active queue.";
+			String RejectionMsg = "Operation Reject user changes executed successfully.";
+			String RemoveMsg = "Operation Approve user changes executed successfully. "+Group+"/"+Username+" placed in DELETED queue.";
+			String ToRepairMsg = "Operation Send to repair executed successfully. "+Group+"/"+Username+" placed in REPAIR queue.";
+			
+			if(elementUtil.getText(validateFilterMsg).equals(CriteriaMsg))
+			{
+				log.info("Record With Values [ " +Username+ " , " +IFSC+ " , " +FullName+ " , " +Group+ " ] Not Found For Approve Operation" );
+			}else {
+					elementUtil.SHORT_TIMEOUT();
+					elementUtil.clickElement(record);
+					
+					try {
+					if(elementUtil.getText(errorMessages).equals(ValidationMsg))
 					{
-						log.info("Approval of Record With Values [ " +Username+ " , " +IFSC+ " , " +FullName+ " , " +GroupName+ " ] Failed. User cannot approve own modification" );
+						log.info("Approval of Record With Values [ " +Username+ " , " +IFSC+ " , " +FullName+ " , " +Group+ " ] Failed. User cannot approve own modification" );
 					}
-				} catch (NoSuchElementException e2) {
-					if(elementUtil.getText(approveScreenUserNameTxt).trim().toString().equals(GroupName+"/"+Username.trim().toString()))
-					{
-						if(operation.equalsIgnoreCase("Approve"))
-						{
+					} catch (NoSuchElementException e) {
+						switch (Operation) {
+						case "Approve":
+							elementUtil.SHORT_TIMEOUT();
 							elementUtil.clickElement(approveBtn);
-							String validationMessageApprove="Operation Approve user changes executed successfully. "+GroupName+"/"+Username+ "placed in active queue.";
-							if(elementUtil.getText(messages).trim().toString().equals(validationMessageApprove.trim().toString()))
-							{
-								log.info("Record With Values  " +Username+  " Approved Successfully" );
-							}//end of if
-						}
-						else if(operation.equalsIgnoreCase("Reject"))
-						{
-							elementUtil.clickElement(rejectBtn);
-							String validationMessageReject="Operation Reject user changes executed successfully.";
-							if(elementUtil.getText(messages).trim().toString().equals(validationMessageReject.trim().toString()))
-							{
-								log.info("Record With Values  " +Username+  " Rejected Successfully" );
-							}//end of if
-						}
-						else if(operation.equalsIgnoreCase("To Repair"))
-						{
-							elementUtil.clickElement(toRepairBtn);
-							String validationMessageToRepair="Operation Send to repair executed successfully. User placed in " +GroupName+"/"+Username+ "placed in REPAIR queue.";
-							if(elementUtil.getText(messages).trim().toString().equals(validationMessageToRepair.trim().toString()))
-							{
-								log.info("Record With Values  " +Username+  " Sent To Repair Queue Successfully" );
-							}//end of if
-						}
-					}//end of if
-					else
-					{
-						log.error("Record Mismatch, Record With Values [ " +Username+ " , " +IFSC+ " , " +FullName+ " , " +GroupName+ " ] Not Found For Approve Operation");
-					}//end of else
-				}//end of catch
-			}//end of catch
-			elementUtil.clickElement(restartWorkFlowBtn);
-			elementUtil.clearText(userName);
-			elementUtil.clearText(ifscCode);
-			elementUtil.clearText(fullname);
-			elementUtil.clearText(groupNameTxtField);
-		}//end of for
+							break;
 
+						case "Reject":
+							elementUtil.SHORT_TIMEOUT();
+							elementUtil.clickElement(rejectBtn);
+							break;
+							
+						case "To Repair":	
+							elementUtil.SHORT_TIMEOUT();
+							elementUtil.clickElement(toRepairBtn);
+							break;
+						}
+						
+						if(elementUtil.getText(messages).equals(ApprovalMsg))
+						{
+							log.info("Record With Values "+Username+" Approved Successfully" );
+						} else if(elementUtil.getText(messages).contains(RejectionMsg))
+						{
+							log.info("Record With Values "+Username+" Rejected Successfully" );
+						}else if(elementUtil.getText(messages).equals(ToRepairMsg))
+						{
+							log.info("Record With Values "+Username+" Sent To Repair Queue Successfully" );
+						}else if(elementUtil.getText(messages).equals(RemoveMsg)){
+							log.info("Record With Values "+Username+" removed Successfully" );
+						}else {
+							log.info("Profile "+Username+" is failed to "+Operation+"");
+						}
+				}//end of catch
+			}//end of else
+			elementUtil.clickElement(restartWorkFlowBtn);
+		}//end of for
 		// perform logout operation
 		logOutOperation();
 	}//end of userApprove function
@@ -457,65 +451,74 @@ public class UserPage {
 	public void removeUserRecord(String SheetName) throws InterruptedException, InvalidFormatException, IOException {
 		testData = fileReader.readSetupExcel(SheetName);
 		for (Map<String, String> map : testData) {
-			String GroupName = map.get("GroupName");
 			String Username = map.get("Username");
+			String IFSC=map.get("IFSC");
 			String FullName = map.get("Full Name");
-			String IFSC=map.get("IFSC Code(User Mapping Code)");
-
-			elementUtil.SHORT_TIMEOUT();
-			elementUtil.clickElement(restartWorkFlowBtn);
+			String Group = map.get("Group");
+			String Status = map.get("Status");
 
 			//enter details on filter screen
+			elementUtil.clearText(userName);
 			elementUtil.enterText(userName, Username);
+			elementUtil.clearText(ifscCode);
 			elementUtil.enterText(ifscCode, IFSC);
-			elementUtil.enterText(fullName, FullName);
-			elementUtil.enterText(groupNameTxtField,GroupName);
-
+			elementUtil.clearText(fullname);
+			elementUtil.enterText(fullname, FullName);
+			elementUtil.clearText(groupNameTxtField);
+			elementUtil.enterText(groupNameTxtField,Group);
+			elementUtil.enterText(statusDropdown,Status);
+			elementUtil.SHORT_TIMEOUT();
 			elementUtil.clickElement(btnReset);
 
-			if (elementUtil.getText(userName).isEmpty() && elementUtil.getText(ifscCode).isEmpty() && elementUtil.getText(fullName).isEmpty() && elementUtil.getText(groupNameTxtField).isEmpty()) {
-				log.info("Reset Button is working fine");
+			if (elementUtil.getText(userName).isEmpty() && elementUtil.getText(ifscCode).isEmpty() && elementUtil.getText(fullname).isEmpty() && elementUtil.getText(groupNameTxtField).isEmpty()) {
+				log.info("Reset Button is working fine for User-->Remove Screen");
 			} else {
-				log.error("Reset Button is not working");
+				log.error("Reset Button is not working for User-->Remove Screen");
 			}
 
 			//enter details on filter screen
+			elementUtil.clearText(userName);
 			elementUtil.enterText(userName, Username);
+			elementUtil.clearText(ifscCode);
 			elementUtil.enterText(ifscCode, IFSC);
-			elementUtil.enterText(fullName, FullName);
-			elementUtil.enterText(groupNameTxtField,GroupName);
-
+			elementUtil.clearText(fullname);
+			elementUtil.enterText(fullname, FullName);
+			elementUtil.clearText(groupNameTxtField);
+			elementUtil.enterText(groupNameTxtField,Group);
+			elementUtil.enterText(statusDropdown,Status);
 			elementUtil.SHORT_TIMEOUT();
 			elementUtil.clickElement(okBtn);
 
-			try {
-				if(elementUtil.getText(errorMessages).trim().toString().equals("No items available for operation".trim().toString()))
-				{
-					log.info("Record With Values [ " +Username+ " , " +IFSC+ " , " +FullName+ " , " +GroupName+ " ] Not Found For Remove Operation" );
-				}
-
-			} catch (NoSuchElementException e) {
-				elementUtil.clickElement(removeScreenRecord);
-				if(elementUtil.getText(removeScreenUserName).trim().toString().equals(Username.trim().toString()))
+			String CriteriaMsg = "No items available for Remove operation given the search criteria";
+			String ValidationMsg = "Operation Remove user executed successfully. "+Group+"/"+Username+" placed in APPROVE queue.";
+			
+			if(elementUtil.getText(validateFilterMsg).equals(CriteriaMsg))
+			{
+				log.info("User record With Values [ " +Username+ " , " +IFSC+ " , " +FullName+ " , " +Group+ " ] Not Found For Remove Operation" );
+			}else {
+				elementUtil.clickElement(record);
+				if(elementUtil.getText(removeScreenUserName).trim().toString().equals(Group+"/"+Username))
 				{
 					elementUtil.SHORT_TIMEOUT();
 					elementUtil.clickElement(removeBtn);
-					String removeValidationMessage="Operation Remove user executed successfully. User placed in " +GroupName+"/"+Username+ " queue.";
-					if(elementUtil.getText(messages).trim().toString().equals(removeValidationMessage.trim().toString()))
+					elementUtil.SHORT_TIMEOUT();
+
+					if(elementUtil.getText(messages).equals(ValidationMsg))
 					{
-						log.info("Record With UserName " +Username+ " Removed Successfully");
+						log.info("User record With UserName "+Username+" placed in Approve queue for Remove Operation");
+					}else {
+						log.error("User record With UserName "+Username+" is failed to remove");
 					}
 
 				}//end of if
 				else
 				{
-					log.error("Record Mismatch, Record With Values [ " +Username+ " , " +IFSC+ " , " +FullName+ " , " +GroupName+ " ] Not Found For Remove Operation");
+					log.error("Record Mismatch, User record With Values [ " +Username+ " , " +IFSC+ " , " +FullName+ " , " +Group+ " ] Not Found For Remove Operation");
 				}
-			}//end of catch
+			}//end of else
+			elementUtil.clickElement(restartWorkFlowBtn);
 		}//end of for
-
 		// perform logout operation
-		elementUtil.handlewin1(driver);
 		logOutOperation();
 	}//end of userRemove function
 
@@ -523,64 +526,69 @@ public class UserPage {
 	public void userBlockUnblockRecord(String SheetName) throws InterruptedException, InvalidFormatException, IOException {
 		testData = fileReader.readSetupExcel(SheetName);
 		for (Map<String, String> map : testData) {
-			String GroupName = map.get("GroupName");
 			String Username = map.get("Username");
+			String IFSC = map.get("IFSC");
 			String FullName = map.get("Full Name");
-			String IFSC=map.get("IFSC Code(User Mapping Code)");
-
-			elementUtil.SHORT_TIMEOUT();
-			elementUtil.clickElement(restartWorkFlowBtn);
+			String Group = map.get("Group");
 
 			//enter details on filter screen
+			elementUtil.clearText(username);
 			elementUtil.enterText(userName, Username);
+			elementUtil.clearText(ifscCode);
 			elementUtil.enterText(ifscCode, IFSC);
-			elementUtil.enterText(fullName, FullName);
-			elementUtil.enterText(groupNameTxtField,GroupName);
+			elementUtil.clearText(fullname);
+			elementUtil.enterText(fullname, FullName);
+			elementUtil.clearText(groupNameTxtField);
+			elementUtil.enterText(groupNameTxtField,Group);
 
 			elementUtil.clickElement(btnReset);
 
-			if (elementUtil.getText(userName).isEmpty() && elementUtil.getText(ifscCode).isEmpty() && elementUtil.getText(fullName).isEmpty() && elementUtil.getText(groupNameTxtField).isEmpty()) {
-				log.info("Reset Button is working fine");
+			if (elementUtil.getText(userName).isEmpty() && elementUtil.getText(ifscCode).isEmpty() && elementUtil.getText(fullname).isEmpty() && elementUtil.getText(groupNameTxtField).isEmpty()) {
+				log.info("Reset Button is working fine for User-->Block/Unblock screen");
 			} else {
-				log.error("Reset Button is not working");
+				log.error("Reset Button is not working for User-->Block/Unblock screen");
 			}
 
 			//enter details on filter screen
+			elementUtil.clearText(username);
 			elementUtil.enterText(userName, Username);
+			elementUtil.clearText(ifscCode);
 			elementUtil.enterText(ifscCode, IFSC);
-			elementUtil.enterText(fullName, FullName);
-			elementUtil.enterText(groupNameTxtField,GroupName);
+			elementUtil.clearText(fullname);
+			elementUtil.enterText(fullname, FullName);
+			elementUtil.clearText(groupNameTxtField);
+			elementUtil.enterText(groupNameTxtField,Group);
 
 			elementUtil.clickElement(okBtn);
 
-			try {
-				if(elementUtil.getText(errorMessages).trim().toString().equals("No items available for operation".trim().toString()))
-				{
-					log.info("Record With Values [ " +Username+ " , " +IFSC+ " , " +FullName+ " , " +GroupName+ " ] Not Found For Block/Unblock Operation" );
-				}
-
-			} catch (NoSuchElementException e) {
-				elementUtil.clickElement(blockUnblockScreenRecord);
-				if(elementUtil.getText(blockUnblockScreenUserName).trim().toString().equals(Username.trim().toString()))
+			String CriteriaMsg = "No items available for Block/Unblock operation";
+			String ValidationMsg = "Operation Block/Unblock user executed successfully. "+Group+"/"+Username+" placed in APPROVE queue.";
+			
+			if(elementUtil.getText(validateFilterMsg).equals(CriteriaMsg))
+			{
+				log.info("Record With Values [ " +Username+ " , " +IFSC+ " , " +FullName+ " , " +Group+ " ] Not Found For Block/Unblock Operation" );
+			} else {
+				elementUtil.SHORT_TIMEOUT();
+				elementUtil.clickElement(record);
+				elementUtil.SHORT_TIMEOUT();
+				if(elementUtil.getText(blockUnblockScreenUserName).trim().toString().equals(Group+"/"+Username))
 				{
 					elementUtil.SHORT_TIMEOUT();
 					elementUtil.clickElement(blockUnblockBtn);
-					String blockUnblockValidationMessage="Operation Block/Unblock user executed successfully. User placed in " +GroupName+"/"+Username+ " queue.";
-					if(elementUtil.getText(validationMsg).trim().toString().equals(blockUnblockValidationMessage.trim().toString()))
+					if(elementUtil.getText(messages).equals(ValidationMsg))
 					{
-						log.info("Record With UserName " +Username+ " Blocked/Unblocked Successfully");
+						log.info("Record With UserName "+Username+" placed in Approve queue for Blocked/Unblocked Operation");
 					}//end of if
 
 				}//end of if
 				else
 				{
-					log.error("Record Mismatch, Record With Values [ " +Username+ " , " +IFSC+ " , " +FullName+ " , " +GroupName+ " ] Not Found For Block/Unblock Operation");
+					log.error("Record Mismatch, Record With Values [ " +Username+ " , " +IFSC+ " , " +FullName+ " , " +Group+ " ] Not Found For Block/Unblock Operation");
 				}
-			}//end of catch
+			}//end of else
+			elementUtil.clickElement(restartWorkFlowBtn);
 		}//end of for
-
 		// perform logout operation
-		elementUtil.handlewin1(driver);
 		logOutOperation();
 	}//end of userBlockUnblockRecord function
 
@@ -588,19 +596,19 @@ public class UserPage {
 	public void modifyUserRecord(String SheetName) throws InterruptedException, InvalidFormatException, IOException {
 		testData = fileReader.readSetupExcel(SheetName);
 		for (Map<String, String> map : testData) {
-
-			String OriginalGroupName = map.get("Original GroupName");
 			String OriginalUsername = map.get("Original Username");
-			String OriginalFullName = map.get("Original Full Name");
-			String OriginalIFSC=map.get("Original IFSC Code(User Mapping Code)");
-			String GroupName = map.get("GroupName");
+			String OriginalIFSC=map.get("IFSC");
+			String OriginalFullName = map.get("OriginalFullName");
+			String OriginalGroup = map.get("OriginalGroup");
+			String Status = map.get("Status");
 			String Username = map.get("Username");
-			String FullName = map.get("Full Name");
+			String FullName = map.get("FullName");
 			String Language = map.get("Language");
 			String Initials = map.get("Initials");
 			String EmailAddress = map.get("Email Address");
 			String MobileNo = map.get("Mobile No.");
 			String IsSupervisor = map.get("Is Supervisor");
+			String Group = map.get("Group");
 			String Profile = map.get("Profile");
 			String Password = map.get("Password");
 			String VerifyPassword = map.get("Verify Password");
@@ -608,46 +616,51 @@ public class UserPage {
 			String LOGINMATRIXlabel = map.get("LOGINMATRIX.label");
 			String UserMappingCodeDropdown = map.get("User Mapping Code Dropdown");
 			String UserMappingCode=map.get("IFSC Code(User Mapping Code)");
-			
-
-			elementUtil.SHORT_TIMEOUT();
-			elementUtil.clickElement(restartWorkFlowBtn);
 
 			//enter details on filter screen
+			elementUtil.clearText(userName);
 			elementUtil.enterText(userName,OriginalUsername);
+			elementUtil.clearText(ifscCode);
 			elementUtil.enterText(ifscCode, OriginalIFSC);
+			elementUtil.clearText(fullname);
 			elementUtil.enterText(fullname, OriginalFullName);
-			elementUtil.enterText(groupNameTxtField,OriginalGroupName);
-
+			elementUtil.clearText(groupNameTxtField);
+			elementUtil.enterText(groupNameTxtField,OriginalGroup);
+			elementUtil.selectDropDownByVisibleText(statusDropdown, Status);
 			elementUtil.clickElement(btnReset);
 
 			if (elementUtil.getText(userName).isEmpty() && elementUtil.getText(ifscCode).isEmpty() && elementUtil.getText(fullname).isEmpty() && elementUtil.getText(groupNameTxtField).isEmpty()) {
-				log.info("Reset Button is working fine");
+				log.info("Reset Button is working fine for User-->Modify Screen");
 			} else {
-				log.error("Reset Button is not working");
+				log.error("Reset Button is not working for User-->Modify Screen");
 			}//end
 
 			//enter details on filter screen
+			elementUtil.clearText(userName);
 			elementUtil.enterText(userName,OriginalUsername);
+			elementUtil.clearText(ifscCode);
 			elementUtil.enterText(ifscCode, OriginalIFSC);
+			elementUtil.clearText(fullname);
 			elementUtil.enterText(fullname, OriginalFullName);
-			elementUtil.enterText(groupNameTxtField,OriginalGroupName);
-
+			elementUtil.clearText(groupNameTxtField);
+			elementUtil.enterText(groupNameTxtField,OriginalGroup);
+			elementUtil.selectDropDownByVisibleText(statusDropdown, Status);
 			elementUtil.clickElement(okBtn);
 
-			try {
-				if(elementUtil.getText(errorMessages).trim().toString().equals("No items available for Modify operation given the search criteria".trim().toString()))
-				{
-					log.info("Record With Values [ " +OriginalUsername+ " , " +OriginalIFSC+ " , " +OriginalFullName+ " , " +OriginalGroupName+ " ] Not Found For Modify/Repair Operation" );
-				}
-
-			} catch (NoSuchElementException e) {
+			String CriteriaMsg = "No items available for Modify operation given the search criteria";
+			String ValidationMsg = "Operation Modify/Repair user executed successfully. "+Group+"/"+Username+" placed in APPROVE queue.";
+			String ExistingMsg = "User already exists";
+			
+			if(elementUtil.getText(validateFilterMsg).equals(CriteriaMsg))
+			{
+				log.info("Record With Values [ " +OriginalUsername+ " , " +OriginalIFSC+ " , " +OriginalFullName+ " , " +OriginalGroup+ " ] Not Found For Modify/Repair Operation" );
+			} else {
 				elementUtil.SHORT_TIMEOUT();
-				elementUtil.clickElement(modifyScreenRecord);
-				if(elementUtil.getAttribute(userAdd_Modify_Screen_UserName).trim().toString().equals(OriginalUsername.trim().toString()))
+				elementUtil.clickElement(record);
+				if(elementUtil.getAttribute(username).equals(OriginalUsername))
 				{
-					elementUtil.clearText(userAdd_Modify_Screen_UserName);
-					elementUtil.enterText(userAdd_Modify_Screen_UserName,Username);
+					elementUtil.clearText(username);
+					elementUtil.enterText(username,Username);
 					elementUtil.clearText(fullName);
 					elementUtil.enterText(fullName,FullName);
 					elementUtil.selectDropDownByVisibleText(language, Language);
@@ -659,6 +672,7 @@ public class UserPage {
 					elementUtil.enterText(mobileNo, MobileNo);
 					elementUtil.SHORT_TIMEOUT();
 					elementUtil.selectDropDownByVisibleText(isSupervisor, IsSupervisor);
+					elementUtil.selectDropDownByVisibleText(groupDropdown, Group);
 					elementUtil.selectDropDownByVisibleText(profile, Profile);
 					elementUtil.clearText(password);
 					elementUtil.enterText(password, Password);
@@ -666,15 +680,14 @@ public class UserPage {
 					elementUtil.enterText(verifyPassword, VerifyPassword);
 					elementUtil.clearText(externalId);
 					elementUtil.enterText(externalId, ExternalUserID);
-					elementUtil.clearText(LOGINMATRIXlabelField);
-					elementUtil.enterText(LOGINMATRIXlabelField,LOGINMATRIXlabel);
+					elementUtil.selectDropDownByVisibleText(LOGINMATRIXlabelField, LOGINMATRIXlabel);
 					elementUtil.selectDropDownByVisibleText(userMappingCodedropdown, UserMappingCodeDropdown);
 					elementUtil.clearText(userMappingCode);
 					elementUtil.enterText(userMappingCode, UserMappingCode);
 					
 					elementUtil.clickElement(okBtn);
 					try {
-						if(elementUtil.getText(errorMessages).trim().toString().equals("User already exists".trim().toString()))
+						if(elementUtil.getText(errorMessages).equals(ExistingMsg))
 						{
 							log.info("Duplicate Record Found , Record With " +Username+ " Already Exists");
 						}//end of if
@@ -682,25 +695,26 @@ public class UserPage {
 						{
 							log.info("Test Data Provided For Modify/Repair Operation Is Not As Per Valid Format");
 						}//end of else
-					} catch (NoSuchElementException e2) {
+					} catch (NoSuchElementException e) {
 						elementUtil.SHORT_TIMEOUT();
 						elementUtil.clickElement(okBtn);
-						
-						String modifyScreenValidationMessage="Operation Modify/Repair user executed successfully. " +GroupName+"/"+Username+ " placed in Approve queue.";
-						if(elementUtil.getText(messages).trim().toString().equals(modifyScreenValidationMessage.trim().toString()))
+		
+						if(elementUtil.getText(messages).equals(ValidationMsg))
 						{
-							log.info("Record With UserName " +Username+ " Modified Successfully");
-						}//end of if
+							log.info("Record With UserName "+Username+" placed in Approve queue for Modify Operation");
+						}else {
+							log.error("Record With UserName "+Username+" failed to modify");
+						}
 					}//end of catch
 
 				}//end of if
 				else
 				{
-					log.info("Record Mismatch, Record With Values [ " +OriginalUsername+ " , " +OriginalIFSC+ " , " +OriginalFullName+ " , " +OriginalGroupName+ " ] Not Found For Modify/Repair Operation" );		
+					log.info("Record Mismatch, Record With Values [ " +OriginalUsername+ " , " +OriginalIFSC+ " , " +OriginalFullName+ " , " +OriginalGroup+ " ] Not Found For Modify/Repair Operation" );		
 				}
-		}//end of catch
+		}//end of else
+			elementUtil.clickElement(restartWorkFlowBtn);
 	}//end of for
-
 	// perform logout operation
 	logOutOperation();
 }//end of modifyUserRecord function
@@ -709,65 +723,60 @@ public class UserPage {
 public void listUserRecord(String SheetName) throws InterruptedException, InvalidFormatException, IOException {
 	testData = fileReader.readSetupExcel(SheetName);
 	for (Map<String, String> map : testData) {
-		String GroupName = map.get("GroupName");
 		String Username = map.get("Username");
+		String IFSC=map.get("IFSC");
 		String FullName = map.get("Full Name");
-		String IFSC=map.get("IFSC Code(User Mapping Code)");
-		String status=map.get("Status");
-
-		elementUtil.SHORT_TIMEOUT();
-		elementUtil.clickElement(restartWorkFlowBtn);
-
-		//enter details on filter screen
-//		elementUtil.enterText(userName, Username);
-//		elementUtil.enterText(ifscCode, IFSC);
-//		elementUtil.enterText(fullname, FullName);
-//		elementUtil.enterText(groupNameTxtField,GroupName);
-//		elementUtil.selectDropDownByVisibleText(statusDropdown, status);
-//
-//		elementUtil.clickElement(btnReset);
-//
-//		if (elementUtil.getText(userName).isEmpty() && elementUtil.getText(ifscCode).isEmpty() && elementUtil.getText(fullname).isEmpty() && elementUtil.getText(groupNameTxtField).isEmpty()) {
-//			log.info("Reset Button is working fine");
-//		} else {
-//			log.error("Reset Button is not working");
-//		}
+		String Group = map.get("Group");
+		String Status=map.get("Status");
 
 		//enter details on filter screen
 		elementUtil.enterText(userName, Username);
 		elementUtil.enterText(ifscCode, IFSC);
 		elementUtil.enterText(fullname, FullName);
-		elementUtil.enterText(groupNameTxtField,GroupName);
-		elementUtil.selectDropDownByVisibleText(statusDropdown, status);
+		elementUtil.enterText(groupNameTxtField,Group);
+		elementUtil.selectDropDownByVisibleText(statusDropdown, Status);
+		elementUtil.SHORT_TIMEOUT();
+		elementUtil.clickElement(btnReset);
+
+		if (elementUtil.getText(userName).isEmpty() && elementUtil.getText(ifscCode).isEmpty() && elementUtil.getText(fullname).isEmpty() && elementUtil.getText(groupNameTxtField).isEmpty()) {
+			log.info("Reset Button is working fine for User-->View Screen");
+		} else {
+			log.error("Reset Button is not working for User-->View Screen");
+		}
+
+		//enter details on filter screen
+		elementUtil.enterText(userName, Username);
+		elementUtil.enterText(ifscCode, IFSC);
+		elementUtil.enterText(fullname, FullName);
+		elementUtil.enterText(groupNameTxtField,Group);
+		elementUtil.selectDropDownByVisibleText(statusDropdown, Status);
 
 		elementUtil.SHORT_TIMEOUT();
 		elementUtil.clickElement(okBtn);
 
-
-		if(elementUtil.getText(listScreenErrorMessage).trim().toString().equals("No items available for List operation given the search criteria".trim().toString()))
+		String CriteriaMsg = "No items available for List operation given the search criteria";
+		if(elementUtil.getText(validateFilterMsg).equals(CriteriaMsg))
 		{
-			log.info("Record With Values [ " +Username+ " , " +IFSC+ " , " +FullName+ " , " +GroupName+ " ] Not Found For List Operation" );
+			log.info("User record With Values [ " +Username+ " , " +IFSC+ " , " +FullName+ " , " +Group+ " ] Not Found For List Operation" );
 		}//end of if
 
 		else
 		{
 			elementUtil.SHORT_TIMEOUT();
 			String userRecordStatusValue=elementUtil.getText(userListScreenRecordStatusValue);
-			elementUtil.SHORT_TIMEOUT();
 			String listScreenRecordUserNameValue=elementUtil.getText(listScreenRecordUserName);
-			elementUtil.SHORT_TIMEOUT();
 			System.out.println(userRecordStatusValue+""+listScreenRecordUserNameValue);
-			if(listScreenRecordUserNameValue.trim().toString().equals(GroupName+"/"+Username.trim().toString()))
+			if(listScreenRecordUserNameValue.trim().toString().equals(Group+"/"+Username.trim().toString()))
 			{
-				log.info("Record With " +Username+ " Is Displayed In List With Status " +userRecordStatusValue);
+				log.info("User record With "+Username+" Is Displayed In List With Status " +userRecordStatusValue);
 			}//end of if
 			else
 			{
-				log.info("Record With " +Username+ " Is Not Displayed In List" );
+				log.info("User record With "+Username+" Is Not Displayed In List" );
 
 			}//end of else
 		}//end of else
-
+		elementUtil.clickElement(restartWorkFlowBtn);
 	}//end of for 
 
 	// perform logout operation

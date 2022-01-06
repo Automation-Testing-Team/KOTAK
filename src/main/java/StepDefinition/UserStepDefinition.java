@@ -57,11 +57,11 @@ public class UserStepDefinition {
 	}//end
 
 	@Then("User goes to Approve screen and approves the record using {string}")
-	public void user_goes_to_Approve_screen_and_approves_the_record_using(String sheetName) throws InvalidFormatException, InterruptedException, IOException {
-		userPage.approveUserRecord(sheetName);
+	public void user_goes_to_Approve_screen_and_approves_the_record_using(String SheetName) throws InvalidFormatException, InterruptedException, IOException {
+		userPage.approveUserRecord(SheetName);
 	}//end
 	
-	//-----------User List--------------//
+	//-----------View User--------------//
 
 	@Given("User goes to Administration and then User List menu")
 	public void user_goes_to_Administration_and_then_User_List_menu() throws InterruptedException {
@@ -72,8 +72,8 @@ public class UserStepDefinition {
 	}//end
 
 	@Then("User goes to List screen and views the record using {string}")
-	public void user_goes_to_List_screen_and_views_the_record_using(String sheetName) throws InvalidFormatException, InterruptedException, IOException {
-		userPage.listUserRecord(sheetName);
+	public void user_goes_to_List_screen_and_views_the_record_using(String SheetName) throws InvalidFormatException, InterruptedException, IOException {
+		userPage.listUserRecord(SheetName);
 	}//end
 	
 	//------------User Modify/Repair----------------//
@@ -87,8 +87,8 @@ public class UserStepDefinition {
 	}//end
 
 	@Then("User provides valid record details for Modify\\/Repair operation using {string}")
-	public void user_provides_valid_record_details_for_Modify_Repair_operation_using(String sheetName) throws InvalidFormatException, InterruptedException, IOException {
-		userPage.modifyUserRecord(sheetName);
+	public void user_provides_valid_record_details_for_Modify_Repair_operation_using(String SheetName) throws InvalidFormatException, InterruptedException, IOException {
+		userPage.modifyUserRecord(SheetName);
 	}//end
 	
 	//---------------User Remove-------------------//
@@ -102,8 +102,8 @@ public class UserStepDefinition {
 	}//end
 
 	@Then("User goes to Remove screen and remove the record using {string}")
-	public void user_goes_to_Remove_screen_and_remove_the_record_using(String sheetName) throws InvalidFormatException, InterruptedException, IOException {
-		userPage.removeUserRecord(sheetName);
+	public void user_goes_to_Remove_screen_and_remove_the_record_using(String SheetName) throws InvalidFormatException, InterruptedException, IOException {
+		userPage.removeUserRecord(SheetName);
 	}//end
 
 	//-------------User Block/Unblock----------------//
@@ -116,8 +116,8 @@ public class UserStepDefinition {
 	}//end
 
 	@Then("User goes to BlockUnblock screen and Block or UnBlock the record using {string}")
-	public void user_goes_to_BlockUnblock_screen_and_Block_or_UnBlock_the_record_using(String sheetName) throws InvalidFormatException, InterruptedException, IOException {
-		userPage.userBlockUnblockRecord(sheetName);
+	public void user_goes_to_BlockUnblock_screen_and_Block_or_UnBlock_the_record_using(String SheetName) throws InvalidFormatException, InterruptedException, IOException {
+		userPage.userBlockUnblockRecord(SheetName);
 	}//end
 
 

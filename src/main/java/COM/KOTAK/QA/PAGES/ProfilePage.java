@@ -19,11 +19,7 @@ import cucumber.api.java.et.Eeldades;
 public class ProfilePage {
 
 	/**
-	 * @Author -- Yashashree Suryawanshi
-	 * @version 1.0
-	 * @since 26-11-2021
-	 * 
-	 * <h2>Class Description : Class Involving different methods related to Administration->Profile Menu</h2>
+	 * @Author -- Suvarna Prabhumatkari
 	 **/
 
 	List<Map<String, String>> test_Data;
@@ -1149,7 +1145,7 @@ public class ProfilePage {
 		test_Data = fileReader.readSetupExcel(SheetName);
 		for (Map<String, String> map : test_Data) {
 			String ProfileName = map.get("Profile Name");
-			String Check_UncheckBtn = map.get("Check All/UnCheck All");
+			String Check_UncheckBtn = map.get("Check All/UnCheck All(Y/N)");
 			String Password = map.get("Password");
 			String Logout = map.get("Logout");
 			String Log_View = map.get("Log-View");
@@ -2050,7 +2046,7 @@ public class ProfilePage {
 		for (Map<String, String> map : test_Data) {
 			String originalProfileName = map.get("Original Profile Name");
 			String ProfileName = map.get("Profile Name");
-			String Check_UncheckBtn = map.get("Check All/UnCheck All");
+			String Check_UncheckBtn = map.get("Check All/UnCheck All(Y/N)");
 			String Password = map.get("Password");
 			String Logout = map.get("Logout");
 			String Log_View = map.get("Log-View");
@@ -2759,7 +2755,7 @@ public class ProfilePage {
 					}catch (NoSuchElementException e) {
 						elementUtil.SHORT_TIMEOUT();
 						elementUtil.clickElement(okBtn);
-						String profileAddValidationMessage="Operation Modify/Repair profile executed successfully. "+ProfileName+" placed in Approve queue.";
+						String profileAddValidationMessage="Operation Modify/Repair profile executed successfully. "+ProfileName+" placed in APPROVE queue.";
 						if(elementUtil.getText(validationmsg).equals(profileAddValidationMessage))
 						{
 							log.info("Record With Profile Name "+originalProfileName+" gets modified and placed in Approve queue");

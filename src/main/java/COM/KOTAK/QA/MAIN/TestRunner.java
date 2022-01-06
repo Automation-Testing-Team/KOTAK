@@ -16,7 +16,7 @@ import io.cucumber.junit.CucumberOptions;
 		glue= {"StepDefinition","AppHooks"},
 		monochrome=true, 
 		dryRun=false	
-		,tags= "@TC_11_03_ProfileModifyScenario"
+		,tags= "@TC01_02_Approve_User"
 		,plugin = {"pretty", "html:target/cucumber-html-report","json:target/cucumber-reports/Cucumber.json","junit:target/cucumber-reports/Cucumber.xml",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 

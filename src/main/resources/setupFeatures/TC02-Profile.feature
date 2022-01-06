@@ -16,7 +16,7 @@ Feature: To test Profile functionality
   Scenario Outline: To Approve Maker Profile
     Given user goes to Administration and then Profile Approve menu
     Then user approve the record using "<SheetName>"
-	#done
+		#done
     Examples:
     |SheetName       |
     |Profile_Approve | 
