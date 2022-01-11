@@ -113,8 +113,10 @@ public class GroupStepDefinition {
 	//--------Unblock Group----------//
 	@Given("user goes to administration and clicks on Group menu and Unblock menu")
 	public void user_goes_to_administration_and_clicks_on_group_menu_and_unblock_menu_and_enters() throws InterruptedException {
-		elementUtil.GoToFrame("toc");
+		elementUtil.GoToFrame("content");
 		elementUtil.SHORT_TIMEOUT();
+		homePage.LogOut();
+		homePage = hooks.launchBrowser1();
 		groupPage=homePage.clickonUnblockGroupLink();
 	}
 	

@@ -28,18 +28,14 @@ Feature: To test the functionality of Name Matching Menu
   Scenario Outline: To check functionality of Modify Name Matching
     Given User navigates to Application and clicks on Maintenance menu and then selects Name Matching menu and clicks on sub option Modify
     Then User modify Name Matching record using "<SheetName>"
-
+#done
     Examples: 
     |SheetName           |
     |NameMatching_Modify |
     
     @TC_05_04_DeleteNameMatching
-  Scenario Outline: To check functionality of Delete Name Matching
+  Scenario: To check functionality of Delete Name Matching
     Given User navigates to Application and clicks on Maintenance menu and then selects Name Matching menu and clicks on sub option Delete
-    Then User deletes Name Matching record using "<SheetName>"
-
-    Examples: 
-    |SheetName           |
-    |NameMatching_Delete |
-    
+    Then User deletes Name Matching record
+    #done
     

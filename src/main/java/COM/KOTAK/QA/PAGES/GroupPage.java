@@ -110,7 +110,7 @@ public class GroupPage {
 	WebElement blockBtn;
 	
 	// Unblock Record
-	@FindBy(name="unblockBtn")
+	@FindBy(name="unblock")
 	WebElement unblockBtn;
 	
 	// Modify Record
@@ -558,6 +558,7 @@ public class GroupPage {
 			}
 		}
 		catch (NoSuchElementException e) {
+			elementUtil.SHORT_TIMEOUT();
 			elementUtil.clickElement(unblockBtn);	
 			elementUtil.SHORT_TIMEOUT();
 			try {

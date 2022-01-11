@@ -85,7 +85,7 @@ public class HomePage {
 	@FindBy(xpath = "//a[contains(text(),'Modify')]")
 	WebElement scheduleModifyLink;
 	
-	// WebElements for Schedule Menu
+	// WebElements for Name Matching Menu
 	@FindBy(xpath = "//a[contains(text(),'Name Matching')]")
 	WebElement nameMatchingLink;
 	
@@ -100,6 +100,30 @@ public class HomePage {
 
 	@FindBy(xpath = "//a[contains(text(),'Delete')]")
 	WebElement nameMatchingDeleteLink;
+	
+	// WebElements for Mode Of Operation Menu
+	@FindBy(xpath = "//a[normalize-space()='Mode Of Operation']")
+	WebElement modeOfOperationLink;
+		
+	@FindBy(xpath = "//a[normalize-space()='List']")
+	WebElement modeOfOperationListLink;
+		
+	@FindBy(xpath = "//a[normalize-space()='Add']")
+	WebElement modeOfOperationAddLink;
+		
+	@FindBy(xpath = "//a[normalize-space()='Approve']")
+	WebElement modeOfOperationApproveLink;
+
+	@FindBy(xpath = "//a[normalize-space()='Modify']")
+	WebElement modeOfOperationModifyLink;
+	
+	@FindBy(xpath = "//a[normalize-space()='Delete']")
+	WebElement modeOfOperationDeleteLink;
+	
+	@FindBy(xpath = "//a[normalize-space()='Confirm Delete']")
+	WebElement modeOfOperationConfirmDeleteLink;
+	
+	
 	
 	// WebElements for Currency Menu
 	@FindBy(xpath = "//a[contains(text(),'Currency')]")
@@ -809,6 +833,7 @@ public class HomePage {
 
 	// ----------Method to reach to Group Unblock Link--------//
 	public GroupPage clickonUnblockGroupLink() throws InterruptedException {
+		elementUtil.GoToFrame("toc");
 		elementUtil.clickElement(administrationMenu);
 		elementUtil.clickElement(groupMenu);
 		elementUtil.clickElement(groupUnblock);
@@ -1763,6 +1788,46 @@ public class HomePage {
 			elementUtil.SHORT_TIMEOUT();
 			return new NameMatchingPage(driver);
 		}
+		
+		// ----------------------Mode Of Operation Menu Methods--------------------------------//
+
+		// --------Method to reach to Mode Of Operation List Link---------//
+		public CorporatePage clickonModeOfOperationListLink() throws InterruptedException {
+			elementUtil.clickElement(applicationLink);
+			elementUtil.clickElement(maintenanceLink);
+			elementUtil.clickElement(corporateCMSlink);
+			elementUtil.clickElement(modeOfOperationLink);
+			elementUtil.clickElement(modeOfOperationListLink);
+			elementUtil.handlewin(driver);
+			return new CorporatePage(driver);
+		}
+		
+		// --------Method to reach to Mode Of Operation Add Link---------//
+				public void clickonModeOfOperationAddLink() throws InterruptedException {
+					elementUtil.clickElement(applicationLink);
+					elementUtil.clickElement(maintenanceLink);
+					elementUtil.clickElement(corporateCMSlink);
+					elementUtil.clickElement(modeOfOperationLink);
+					elementUtil.clickElement(modeOfOperationAddLink);
+					
+				}
+				
+				// --------Method to reach to Mode Of Operation Approve Link---------//
+				public void clickonModeOfOperationApproveLink() throws InterruptedException {
+					elementUtil.clickElement(applicationLink);
+					elementUtil.clickElement(maintenanceLink);
+					elementUtil.clickElement(corporateCMSlink);
+					elementUtil.clickElement(modeOfOperationLink);
+					elementUtil.clickElement(modeOfOperationApproveLink);
+					
+				}
+
+		
+		
+		
+		
+		
+		
 	
 	
 

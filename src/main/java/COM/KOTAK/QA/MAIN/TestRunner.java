@@ -8,7 +8,6 @@ import COM.KOTAK.QA.UTIL.ExtentReportGenerator;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
-
 @RunWith(Cucumber.class)
 
 @CucumberOptions( 
@@ -16,7 +15,7 @@ import io.cucumber.junit.CucumberOptions;
 		glue= {"StepDefinition","AppHooks"},
 		monochrome=true, 
 		dryRun=false	
-		,tags= "@TC01_02_Approve_User"
+		,tags= "@TC_05_01_ListModeOfOperation"
 		,plugin = {"pretty", "html:target/cucumber-html-report","json:target/cucumber-reports/Cucumber.json","junit:target/cucumber-reports/Cucumber.xml",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 

@@ -116,6 +116,14 @@ public class CorporatePage {
 
 	@FindBy(xpath = "//*[@id=\"pageBody\"]/table/tbody/tr/td/table[2]/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[5]/td[2]")
 	WebElement listScreenStatus;
+	
+	// ----------Mode Of Operation List Menu------------------
+	@FindBy(name = "modeOfOperationCode")
+	WebElement modeOfOperationCodeField;
+	
+	@FindBy(xpath = "//*[@id=\"pageBody\"]/table/tbody/tr/td/table[2]/tbody/tr/td/table/tbody/tr/td/table/tbody/tr[3]/td[2]")
+	WebElement modeOfOperationCode; 
+	
 
 	// -------Industry Type Xpath Menu-------------------------
 	@FindBy(name = "industryTypeCode")
@@ -10092,11 +10100,62 @@ public class CorporatePage {
 			logOutOperation();
 		}// end of approveDuplicateCheckRecord function
 	
+		
+		//-------------Methods for Mode Of Operation------------------//
+		
+		//---------------Method to List Mode Of Operation--------------------------//
+		
+		public void listModeOfOperationRecord(String SheetName) throws InvalidFormatException, IOException, InterruptedException {
+			
+			//fetch details
+			List<Map<String, String>> test_Data = fileReader.readSetupExcel(SheetName);
+			for (Map<String, String> map : test_Data) {
+				String ModeOfOperationCode = map.get("Mode Of Operation Code");
+				
+				// enter details on filter screen
+				elementutil.enterText(modeOfOperationCodeField, ModeOfOperationCode);
+				
+				// click on Reset button
+				elementutil.clickElement(btnReset);
+				if(elementutil.getAttribute(modeOfOperationCodeField).isEmpty()) {
+					System.out.println("Reset button is working fine for Mode of Operation List Screen");
+				}else {
+					System.out.println("Reset button is not working for Mode of Operation List Screen");
+				}
+				
+				// enter details on filter screen
+				elementutil.enterText(modeOfOperationCodeField, ModeOfOperationCode);
+				
+				elementutil.clickElement(okBtn);
+				
+				try {
+					if (elementutil.getText(errormessages).equals("No Records available for List operation")) {
+						System.out.println("Record Mode Of Operation with Mode Of Operation Code "+ModeOfOperationCode+" not found");
+						System.out.println("No Records available for List operation Validation Message Displayed Is Correct");
+					} // end of if
+					else {
+						System.out.println("Record With Mode Of Operation code "+ModeOfOperationCode+" Not Found");
+						System.out.println("No Records available for List operation Validation Message displayed Is Incorrect");
+					} // end of else
+				} catch (NoSuchElementException e) {
+					elementutil.SHORT_TIMEOUT();
+					elementutil.clickElement(screenRecord);
+					String ModeOfOperation_Code = elementutil.getText(modeOfOperationCode).trim().toString();
+					if (ModeOfOperation_Code.equalsIgnoreCase(ModeOfOperationCode)) {
+						log.info("Mode Of Operation Record "+ModeOfOperationCode+" is Displayed in List");
+					} // end of if
+					else {
+						log.info("Mode Of Operation Record "+ModeOfOperationCode+" is not Displayed in List");
+					} // end of else
+				} // end of catch
+				elementutil.clickElement(restartWorkflow);
+			}//end of for loop
+			// perform logout operation
+			elementutil.SHORT_TIMEOUT();
+			logOutOperation();
+		}
+		
 	
-	
-	
-	
-
 	// -----------------Method to perform Logout
 	// Operation----------------------------
 	public void logOutOperation() throws InterruptedException {

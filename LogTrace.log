@@ -1,24 +1,8 @@
-2022-01-05 21:02:27,781  INFO [main] LoginPage:58 - Advanced button clicked
-2022-01-05 21:02:30,845  INFO [main] LoginPage:61 - ProceedLink clicked
-2022-01-05 21:02:34,196  INFO [main] LoginPage:64 - Accept button clicked
-2022-01-05 21:02:34,258  INFO [main] LoginPage:66 - Username entered
-2022-01-05 21:02:34,307  INFO [main] LoginPage:68 - Password entered
-2022-01-05 21:02:37,808  INFO [main] LoginPage:70 - Login button clicked
-2022-01-05 21:02:37,844  INFO [main] LoginPage:86 - Login Successful
-2022-01-05 21:02:44,422  INFO [main] LoginPage:58 - Advanced button clicked
-2022-01-05 21:02:47,475  INFO [main] LoginPage:61 - ProceedLink clicked
-2022-01-05 21:02:50,666  INFO [main] LoginPage:64 - Accept button clicked
-2022-01-05 21:02:50,745  INFO [main] LoginPage:66 - Username entered
-2022-01-05 21:02:50,813  INFO [main] LoginPage:68 - Password entered
-2022-01-05 21:02:52,831  INFO [main] LoginPage:70 - Login button clicked
-2022-01-05 21:02:52,844  INFO [main] LoginPage:86 - Login Successful
-2022-01-05 21:03:15,470  INFO [main] UserPage:375 - Reset Button is working fine for User-->Approve Screen
-2022-01-05 21:03:16,077  INFO [main] UserPage:400 - Record With Values [ Maker7 ,  ,  , ADMIN ] Not Found For Approve Operation
-2022-01-05 21:03:16,810  INFO [main] UserPage:375 - Reset Button is working fine for User-->Approve Screen
-2022-01-05 21:03:17,202  INFO [main] UserPage:400 - Record With Values [ TestChecker103 ,  ,  , ADMIN ] Not Found For Approve Operation
-2022-01-05 21:03:17,792  INFO [main] UserPage:375 - Reset Button is working fine for User-->Approve Screen
-2022-01-05 21:03:18,442  INFO [main] UserPage:400 - Record With Values [ TestChecker102 ,  ,  , ADMIN ] Not Found For Approve Operation
-2022-01-05 21:03:19,088  INFO [main] UserPage:375 - Reset Button is working fine for User-->Approve Screen
-2022-01-05 21:03:19,560  INFO [main] UserPage:400 - Record With Values [ Maker5 ,  ,  , ADMIN ] Not Found For Approve Operation
-2022-01-05 21:03:20,164  INFO [main] UserPage:375 - Reset Button is working fine for User-->Approve Screen
-2022-01-05 21:03:27,451  INFO [main] UserPage:433 - Record With Values TestChecker108 Rejected Successfully
+2022-01-11 14:03:23,728  INFO [main] LoginPage:58 - Advanced button clicked
+2022-01-11 14:03:26,782  INFO [main] LoginPage:61 - ProceedLink clicked
+2022-01-11 14:03:30,007  INFO [main] LoginPage:64 - Accept button clicked
+2022-01-11 14:03:30,068  INFO [main] LoginPage:66 - Username entered
+2022-01-11 14:03:30,116  INFO [main] LoginPage:68 - Password entered
+2022-01-11 14:03:33,523  INFO [main] LoginPage:70 - Login button clicked
+2022-01-11 14:03:33,546  INFO [main] LoginPage:86 - Login Successful
+2022-01-11 14:03:42,161  INFO [main] CorporatePage:10145 - Mode Of Operation Record ds is Displayed in List
