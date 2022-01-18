@@ -28,10 +28,10 @@ public class CorporatePage {
 	private WebDriver driver;
 	ElementUtil elementutil;
 	FileReadUtils fileReader;
-	ValidationMessages errorMessageChecker;
+//	ValidationMessages errorMessageChecker;
 	List<Map<String, String>> test_Data;
 	HomePage homePage;
-	Logger log = Logger.getLogger(CorporatePage.class);
+//	Logger log = Logger.getLogger(CorporatePage.class);
 
 	// --- WebElements of Corporate CMS and Submenus Xpath-----------------
 
@@ -10104,7 +10104,6 @@ public class CorporatePage {
 		//-------------Methods for Mode Of Operation------------------//
 		
 		//---------------Method to List Mode Of Operation--------------------------//
-		
 		public void listModeOfOperationRecord(String SheetName) throws InvalidFormatException, IOException, InterruptedException {
 			
 			//fetch details
@@ -10128,8 +10127,10 @@ public class CorporatePage {
 				
 				elementutil.clickElement(okBtn);
 				
+				String ValidationMsg = "No Records available for List operation";
+				
 				try {
-					if (elementutil.getText(errormessages).equals("No Records available for List operation")) {
+					if (elementutil.getText(errormessages).equals(ValidationMsg)) {
 						System.out.println("Record Mode Of Operation with Mode Of Operation Code "+ModeOfOperationCode+" not found");
 						System.out.println("No Records available for List operation Validation Message Displayed Is Correct");
 					} // end of if
@@ -10142,10 +10143,10 @@ public class CorporatePage {
 					elementutil.clickElement(screenRecord);
 					String ModeOfOperation_Code = elementutil.getText(modeOfOperationCode).trim().toString();
 					if (ModeOfOperation_Code.equalsIgnoreCase(ModeOfOperationCode)) {
-						log.info("Mode Of Operation Record "+ModeOfOperationCode+" is Displayed in List");
+						System.out.println("Mode Of Operation Record "+ModeOfOperationCode+" is Displayed in List");
 					} // end of if
 					else {
-						log.info("Mode Of Operation Record "+ModeOfOperationCode+" is not Displayed in List");
+						System.out.println("Mode Of Operation Record "+ModeOfOperationCode+" is not Displayed in List");
 					} // end of else
 				} // end of catch
 				elementutil.clickElement(restartWorkflow);
@@ -10153,9 +10154,95 @@ public class CorporatePage {
 			// perform logout operation
 			elementutil.SHORT_TIMEOUT();
 			logOutOperation();
-		}
+		}// end of listModeOfOperationRecord function
 		
-	
+		//---------------Method to Add Mode Of Operation--------------------------//
+		public void addModeOfOperationRecord(String SheetName)
+				throws InterruptedException, InvalidFormatException, IOException {
+
+			// fetch details
+			test_Data = fileReader.readSetupExcel(SheetName);
+			for (Map<String, String> map : test_Data) {
+				String ModeOfOperationCode = map.get("Mode Of Operation Code");
+				String Name = map.get("Name");
+				String IsCIBIntegration = map.get("IsCIBIntegration(Y/N)");
+				String CIBEncryptionMethod = map.get("CIB Encryption Method");
+				String IsUpload = map.get("IsUpload(Y/N)");
+				String UploadEncryptionMethod = map.get("Upload Encryption Method");
+				String SFTPChannel	= map.get("SFTP Channel");
+				String SFTPEncryptionMethod = map.get("SFTP Encryption Method");
+
+				// enter details on filter screen
+				elementUtil.sendkeys(productType, PRODUCTType);
+				// click on ok button
+				elementUtil.clickElement(okBtn);
+
+				String ExistingRecordMsg = "Name match critera for Productype " + PRODUCTType + " already present";
+				try {
+					if (elementUtil.getText(errormessages).equals(ExistingRecordMsg)) {
+						System.out.println("Name Matching record with Product Type " + PRODUCTType + " is already present");
+					}
+				} catch (NoSuchElementException e) {
+					elementUtil.SHORT_TIMEOUT();
+					elementUtil.clickElement(cancelBtn);
+
+					String ValidateFilterMsg = "Name Matching Filter";
+					if (elementUtil.getText(validateFilterMsg).equals(ValidateFilterMsg)) {
+						System.out.println("Cancel Button is working fine");
+					} else {
+						System.out.println("Cancel button is not working fine");
+					}
+
+					elementUtil.clearText(productType);
+					elementUtil.sendkeys(productType, PRODUCTType);
+					elementUtil.clickElement(okBtn);
+					elementUtil.clearText(productType);
+					elementUtil.sendkeys(productType, ProductType);
+					elementUtil.clearText(amountAbove);
+					elementUtil.sendkeys(amountAbove, AmountAbove);
+					elementUtil.clearText(percentage);
+					elementUtil.sendkeys(percentage, Percentage);
+					elementUtil.SHORT_TIMEOUT();
+					elementUtil.clickElement(okBtn);
+
+					String AmountfieldValidationMsg = "Amount above limit can't blank.";
+					String PercentagefieldValidationMsg = "Percentage can't blank.";
+					String ProductTypeValidationMsg = "Product type can't blank.";
+					String ErrorMsg = "Amount above limit can't blank.\r\n" + "Percentage can't blank.";
+					String ErrorMsg1 = "Product type can't blank.\r\n" + "Amount above limit can't blank.\r\n"
+							+ "Percentage can't blank.";
+					String ValidationMsg = "Added Successfully.";
+
+					try {
+						if (elementUtil.getText(errormessages).equals(ProductTypeValidationMsg)) {
+							System.out.println("Validation message for Blank Product Type is displayed properly");
+//							}else if(elementUtil.getText(errormessages).contains(ErrorMsg1)) {
+//								System.out.println("Validation message for Invalid fields is displayed properly");
+						} else if (elementUtil.getText(errormessages).equals(AmountfieldValidationMsg)) {
+							System.out.println("Validation message for Invalid Amount field is displayed properly");
+						} else if (elementUtil.getText(errormessages).equals(PercentagefieldValidationMsg)) {
+							System.out.println("Validation message for Invalid Percentage field is displayed properly");
+//							}else if(elementUtil.getText(errormessages).contains(ErrorMsg)){
+//								System.out.println("Validation message is displayed properly for Invalid fields");
+						}
+					} catch (NoSuchElementException e1) {
+						if (elementUtil.getText(messages).equals(ValidationMsg)) {
+							System.out.println(
+									"Name Matching record with Product Type " + ProductType + " gets added successfully");
+						} else {
+							System.out.println(
+									"Name Matching record with Product Type " + ProductType + " gets failed to add");
+						}
+					}
+				}
+				elementUtil.clickElement(restartWorkflow);
+			}
+			// perform logout operation
+			elementUtil.SHORT_TIMEOUT();
+			logOutOperation();
+		}// end of addModeOfOperationRecord function
+		
+		
 	// -----------------Method to perform Logout
 	// Operation----------------------------
 	public void logOutOperation() throws InterruptedException {

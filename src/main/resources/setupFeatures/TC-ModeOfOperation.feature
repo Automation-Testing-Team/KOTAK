@@ -12,3 +12,12 @@ Scenario Outline: To check the functionality of Mode Of Operation List
  Examples:
  |SheetName            |
  |ModeOfOperation_List |
+ 
+ @TC_05_02_AddModeOfOperation
+Scenario Outline: To check the functionality of Mode Of Operation Add
+ Given User navigates to Application and Maintenance clicks on Corporate CMS menu and then selects Mode Of Operation and clicks on sub option Add
+ Then User add Mode of Operation record using "<SheetName>"
+
+ Examples:
+ |SheetName           |
+ |ModeOfOperation_Add |

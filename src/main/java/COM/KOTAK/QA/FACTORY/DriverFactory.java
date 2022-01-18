@@ -15,7 +15,7 @@ public class DriverFactory {
 	public static WebDriver driver;
 	public static Properties prop;
 	
-	public static ThreadLocal<WebDriver>tldriver=new ThreadLocal<>();
+	public static ThreadLocal<WebDriver>tldriver=new ThreadLocal<WebDriver>();
 	
 	public WebDriver init_driver(String browser) {
 		

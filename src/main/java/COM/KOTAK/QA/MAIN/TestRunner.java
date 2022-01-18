@@ -26,7 +26,7 @@ public class TestRunner {
 
 	public static void main(String[] args) {
 	    System.out.println("in main method");
-	    PropertyConfigurator.configure(System.getProperty("user.dir") + "/src/main/resources/Log4j.properties");
+	    PropertyConfigurator.configure(System.getProperty("user.dir") + "/src/main/resources/log4j2.xml");
 	    BasicConfigurator.configure();
 	    CreateCucumberOptions cucumberOptions = new CreateCucumberOptions();
 	    ExtentReportGenerator reportGenerator=new ExtentReportGenerator();

@@ -119,7 +119,7 @@ public class NameMatchingPage {
 		}
 		elementUtil.SHORT_TIMEOUT();
 		logOutOperation();
-	}// end of listDuplicateCheckRecord function
+	}// end of listNameMatchingRecord function
 
 	// ----------Method to Delete Name Matching Record---------------------------//
 	public void deleteNameMatchingRecord() throws InterruptedException {
@@ -166,7 +166,7 @@ public class NameMatchingPage {
 //			}
 		elementUtil.SHORT_TIMEOUT();
 		logOutOperation();
-	}// end of deleteDuplicateCheckRecord function
+	}// end of deleteNameMatchingRecord function
 
 	// ----------Method to Add Name Matching Record---------------------------//
 	public void addNameMatchingRecord(String SheetName)
@@ -248,7 +248,7 @@ public class NameMatchingPage {
 		// perform logout operation
 		elementUtil.SHORT_TIMEOUT();
 		logOutOperation();
-	}// end of addDuplicateCheckRecord function
+	}// end of addNameMatchingRecord function
 
 	// ----------Method to Modify Name Matching Record---------------------------//
 	public void modifyNameMatchingRecord(String SheetName) throws InterruptedException, InvalidFormatException, IOException {
@@ -299,7 +299,7 @@ public class NameMatchingPage {
 		}
 		elementUtil.SHORT_TIMEOUT();
 		logOutOperation();
-	}// end of modifyDuplicateCheckRecord function
+	}// end of modifyNameMatchingRecord function
 
 	// -----------------Method to perform Logout
 	// Operation----------------------------

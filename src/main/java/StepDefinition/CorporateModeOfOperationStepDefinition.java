@@ -39,5 +39,16 @@ public class CorporateModeOfOperationStepDefinition {
 		corporatePage.listModeOfOperationRecord(SheetName);
 	}
 	
-	
+	// ----------------Add Mode Of Operation record--------------------------//
+	@Given("User navigates to Application and Maintenance clicks on Corporate CMS menu and then selects Mode Of Operation and clicks on sub option Add")
+	public void user_navigates_to_Application_and_Maintenance_clicks_on_Corporate_CMS_menu_and_then_selects_Mode_Of_Operation_and_clicks_on_sub_option_Add() throws InterruptedException {
+		elementUtil.GoToFrame("toc");
+		elementUtil.SHORT_TIMEOUT();
+		corporatePage = homePage.clickonModeOfOperationAddLink();
+	}
+
+	@Then("User add Mode of Operation record using {string}")
+	public void user_add_Mode_of_Operation_record_using(String SheetName) throws InvalidFormatException, InterruptedException, IOException {
+		corporatePage.addModeOfOperationRecord(SheetName);
+	}
 }

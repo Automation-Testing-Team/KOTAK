@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import net.masterthought.cucumber.Reportable;
@@ -48,7 +47,7 @@ public class ExtentReportGenerator {
 		//		configuration.addClassifications("Branch", "release/1.0");
 
 		File reportOutputDirectory = new File("output");
-		List<String> jsonFiles = new ArrayList<>();
+		List<String> jsonFiles = new ArrayList<String>();
 		//jsonFiles.add("E:\\PINV\\PINV\\PINV\\target\\cucumber-reports\\cucumber.json");
 		jsonFiles.add("E:\\project\\target\\cucumber-reports\\cucumber.json");
 		

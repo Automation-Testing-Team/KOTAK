@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="org.apache.logging.log4j.core.appender.ext">
+	<Appenders>
+    	 <Console name="A1"  target="SYSTEM_OUT">
+	      	<PatternLayout pattern="%d %-5p [%t%X{context}] - %m\r\n"/>
+	      	<ThresholdFilter level="TRACE"/>
+	    </Console>
+		<RollingFile name="TRC" fileName="log_trace.txt" filePattern="C:/work/cjGPS/barbadosrtp/logs/sys_trace.txt%d{yyyy-MM-dd}.%i.zip" ignoreExceptions="false" bufferedIO="true">
+			<ThresholdFilter level="TRACE"/>
+			<PatternLayout>
+				<Pattern>%d %-5p [%t%X{context}] - %m\r\n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<OnStartupTriggeringPolicy />
+	            <TimeBasedTriggeringPolicy interval="1"/>
+	            <SizeBasedTriggeringPolicy size="50MB" />
+	        </Policies>
+	        <DefaultRolloverStrategy fileIndex="nomax"/>
+		</RollingFile>    
+		<RollingFile name="ERR" fileName="Log_errors.txt" filePattern="C:/work/cjGPS/barbadosrtp/logs/sys_errors.txt.%d{yyyy-MM-dd}.%i.zip" ignoreExceptions="false" bufferedIO="true">
+			<ThresholdFilter level="error"/>
+			<PatternLayout>
+				<Pattern>%d %-5p [%t%X{context}] - %m\r\n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<OnStartupTriggeringPolicy />
+	            <TimeBasedTriggeringPolicy interval="1"/>
+	            <SizeBasedTriggeringPolicy size="50MB" />
+	        </Policies>
+	        <DefaultRolloverStrategy fileIndex="nomax"/>
+		</RollingFile>       
+	</Appenders>
+	 <Loggers>
+	    <Root level="INFO">
+		  <AppenderRef ref="A1"/>
+	      <AppenderRef ref="TRC"/>
+		  <AppenderRef ref="ERR"/>
+	    </Root>
+
+	    <AsyncLogger name="com.kotak"                               level="TRACE"> </AsyncLogger>
+  </Loggers>
+</Configuration>

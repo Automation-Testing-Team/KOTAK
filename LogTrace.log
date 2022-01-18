@@ -1,8 +1,0 @@
-2022-01-11 14:03:23,728  INFO [main] LoginPage:58 - Advanced button clicked
-2022-01-11 14:03:26,782  INFO [main] LoginPage:61 - ProceedLink clicked
-2022-01-11 14:03:30,007  INFO [main] LoginPage:64 - Accept button clicked
-2022-01-11 14:03:30,068  INFO [main] LoginPage:66 - Username entered
-2022-01-11 14:03:30,116  INFO [main] LoginPage:68 - Password entered
-2022-01-11 14:03:33,523  INFO [main] LoginPage:70 - Login button clicked
-2022-01-11 14:03:33,546  INFO [main] LoginPage:86 - Login Successful
-2022-01-11 14:03:42,161  INFO [main] CorporatePage:10145 - Mode Of Operation Record ds is Displayed in List

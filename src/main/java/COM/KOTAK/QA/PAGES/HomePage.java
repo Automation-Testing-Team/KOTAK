@@ -84,47 +84,45 @@ public class HomePage {
 
 	@FindBy(xpath = "//a[contains(text(),'Modify')]")
 	WebElement scheduleModifyLink;
-	
+
 	// WebElements for Name Matching Menu
 	@FindBy(xpath = "//a[contains(text(),'Name Matching')]")
 	WebElement nameMatchingLink;
-	
+
 	@FindBy(xpath = "//a[contains(text(),'List')]")
 	WebElement nameMatchingListLink;
-	
+
 	@FindBy(xpath = "//a[contains(text(),'Add')]")
 	WebElement nameMatchingAddLink;
-	
+
 	@FindBy(xpath = "//a[contains(text(),'Modify')]")
 	WebElement nameMatchingModifyLink;
 
 	@FindBy(xpath = "//a[contains(text(),'Delete')]")
 	WebElement nameMatchingDeleteLink;
-	
+
 	// WebElements for Mode Of Operation Menu
 	@FindBy(xpath = "//a[normalize-space()='Mode Of Operation']")
 	WebElement modeOfOperationLink;
-		
+
 	@FindBy(xpath = "//a[normalize-space()='List']")
 	WebElement modeOfOperationListLink;
-		
+
 	@FindBy(xpath = "//a[normalize-space()='Add']")
 	WebElement modeOfOperationAddLink;
-		
+
 	@FindBy(xpath = "//a[normalize-space()='Approve']")
 	WebElement modeOfOperationApproveLink;
 
 	@FindBy(xpath = "//a[normalize-space()='Modify']")
 	WebElement modeOfOperationModifyLink;
-	
+
 	@FindBy(xpath = "//a[normalize-space()='Delete']")
 	WebElement modeOfOperationDeleteLink;
-	
+
 	@FindBy(xpath = "//a[normalize-space()='Confirm Delete']")
 	WebElement modeOfOperationConfirmDeleteLink;
-	
-	
-	
+
 	// WebElements for Currency Menu
 	@FindBy(xpath = "//a[contains(text(),'Currency')]")
 	WebElement currencyLink;
@@ -476,26 +474,26 @@ public class HomePage {
 
 	@FindBy(xpath = "//a[contains(text(),'Scheme/Format Code Mapping')]")
 	WebElement customer_SchemeFormatCdMappingLink;
-	
+
 	// -----------Duplicate Check Menu Xpath-----------------
 	@FindBy(xpath = "//a[normalize-space()='Duplicate Check']")
 	WebElement duplicateCheckLink;
-	
+
 	@FindBy(xpath = "//a[normalize-space()='List']")
 	WebElement duplicateCheckListLink;
-	
+
 	@FindBy(xpath = "//a[normalize-space()='Add']")
 	WebElement duplicateCheckAddLink;
-	
+
 	@FindBy(xpath = "//a[normalize-space()='Approve']")
 	WebElement duplicateCheckApproveLink;
-	
+
 	@FindBy(xpath = "//a[normalize-space()='Modify']")
 	WebElement duplicateCheckModifyLink;
-	
+
 	@FindBy(xpath = "//a[normalize-space()='Delete']")
 	WebElement duplicateCheckDeleteLink;
-	
+
 	@FindBy(xpath = "//a[normalize-space()='Confirm Delete']")
 	WebElement duplicateCheckConfirmDeleteLink;
 
@@ -921,696 +919,695 @@ public class HomePage {
 		return new IFSC_CODEPage(driver);
 	}
 
-	//--------- Corporate Page  Business Group Method-------------------------
-
-		//Method to navigate to Business Group->Add Menu
-		public CorporatePage createBusinessGroup() throws InterruptedException {
-
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(businessGroupLink);
-			elementUtil.clickElement(businessGroupaddLink);
-			elementUtil.handlewin(driver);
-			elementUtil.SHORT_TIMEOUT();
-			return new CorporatePage(driver);
-		}//end of createBusinessGroup function
-
-		//Method to navigate to Business Group->Modify
-		public CorporatePage modifyBusinessGroup() throws InterruptedException {
-
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(businessGroupLink);
-			elementUtil.clickElement(businessGroupModify);
-			elementUtil.handlewin(driver);
-
-			elementUtil.SHORT_TIMEOUT();
-
-			return new CorporatePage(driver);
-		}//end of modifyBusinessGroup function
-
-		//Method to navigate to Business Group->Approve 
-		public CorporatePage approveBusinessGroup() throws InterruptedException {
-
-			elementUtil.GoToFrame("toc");
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(businessGroupLink);
-			elementUtil.clickElement(businessGroupapproveLink);
-			elementUtil.handlewin(driver);
-
-			return new CorporatePage(driver);
-		}//end of approveBusinessGroup function
-
-		//Method to navigate to Business Group->Delete
-		public CorporatePage deleteBusinessGroup() throws InterruptedException {
-
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(businessGroupLink);
-			elementUtil.clickElement(businessGroupDelete);
-			elementUtil.handlewin(driver);
-
-			return new CorporatePage(driver);
-		}//end of deleteBusinessGroup function
-
-		//Method to navigate to Business Group->Confirm Delete
-		public CorporatePage confirmDeleteBusinessGroup() throws InterruptedException {
-
-			elementUtil.GoToFrame("toc");
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(businessGroupLink);
-			elementUtil.clickElement(businessConfirmDelete);
-			elementUtil.handlewin(driver);
-
-			return new CorporatePage(driver);
-		}//end of confirmDeleteBusinessGroup function
-
-		//Method to navigate to Business Group->List
-		public CorporatePage listBusinessGroup() throws InterruptedException {
-
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(businessGroupLink);
-			elementUtil.clickElement(businessGrouplistLink);
-			elementUtil.handlewin(driver);
+	// --------- Corporate Page Business Group Method-------------------------
+
+	// Method to navigate to Business Group->Add Menu
+	public CorporatePage createBusinessGroup() throws InterruptedException {
+
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(businessGroupLink);
+		elementUtil.clickElement(businessGroupaddLink);
+		elementUtil.handlewin(driver);
+		elementUtil.SHORT_TIMEOUT();
+		return new CorporatePage(driver);
+	}// end of createBusinessGroup function
+
+	// Method to navigate to Business Group->Modify
+	public CorporatePage modifyBusinessGroup() throws InterruptedException {
+
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(businessGroupLink);
+		elementUtil.clickElement(businessGroupModify);
+		elementUtil.handlewin(driver);
+
+		elementUtil.SHORT_TIMEOUT();
+
+		return new CorporatePage(driver);
+	}// end of modifyBusinessGroup function
+
+	// Method to navigate to Business Group->Approve
+	public CorporatePage approveBusinessGroup() throws InterruptedException {
+
+		elementUtil.GoToFrame("toc");
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(businessGroupLink);
+		elementUtil.clickElement(businessGroupapproveLink);
+		elementUtil.handlewin(driver);
+
+		return new CorporatePage(driver);
+	}// end of approveBusinessGroup function
+
+	// Method to navigate to Business Group->Delete
+	public CorporatePage deleteBusinessGroup() throws InterruptedException {
+
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(businessGroupLink);
+		elementUtil.clickElement(businessGroupDelete);
+		elementUtil.handlewin(driver);
+
+		return new CorporatePage(driver);
+	}// end of deleteBusinessGroup function
+
+	// Method to navigate to Business Group->Confirm Delete
+	public CorporatePage confirmDeleteBusinessGroup() throws InterruptedException {
+
+		elementUtil.GoToFrame("toc");
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(businessGroupLink);
+		elementUtil.clickElement(businessConfirmDelete);
+		elementUtil.handlewin(driver);
+
+		return new CorporatePage(driver);
+	}// end of confirmDeleteBusinessGroup function
+
+	// Method to navigate to Business Group->List
+	public CorporatePage listBusinessGroup() throws InterruptedException {
+
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(businessGroupLink);
+		elementUtil.clickElement(businessGrouplistLink);
+		elementUtil.handlewin(driver);
+
+		return new CorporatePage(driver);
+	}// end of listBusinessGroup function
+
+	// ---------Corporate Page Industry Type Method---------------------
+	// Method to navigate to Industry Type->Add
+	public CorporatePage addIndustryType() throws InterruptedException {
+
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(industryTypeLink);
+		elementUtil.clickElement(industryTypeaddLink);
+		elementUtil.handlewin(driver);
+
+		elementUtil.SHORT_TIMEOUT();
+		return new CorporatePage(driver);
+	}// end of addIndustryType function
+
+	// Method to navigate to Industry Type->Approve
+	public CorporatePage approveIndustryType() throws InterruptedException {
 
-			return new CorporatePage(driver);
-		}//end of listBusinessGroup function
+		elementUtil.GoToFrame("toc");
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(industryTypeLink);
+		elementUtil.clickElement(industryTypeapproveLink);
 
+		elementUtil.handlewin(driver);
 
-		//---------Corporate Page Industry Type Method---------------------
-		//Method to navigate to Industry Type->Add
-		public CorporatePage addIndustryType() throws InterruptedException {
-
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(industryTypeLink);
-			elementUtil.clickElement(industryTypeaddLink);
-			elementUtil.handlewin(driver);
+		elementUtil.SHORT_TIMEOUT();
+		return new CorporatePage(driver);
+	}// end of approveIndustryType function
 
-			elementUtil.SHORT_TIMEOUT();
-			return new CorporatePage(driver);
-		}//end of addIndustryType function
+	// Method to navigate to Industry Type->Modify
+	public CorporatePage modifyIndustryType() throws InterruptedException {
 
-		//Method to navigate to Industry Type->Approve
-		public CorporatePage approveIndustryType() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(industryTypeLink);
+		elementUtil.clickElement(industryTypeModifyLink);
+		elementUtil.handlewin(driver);
 
-			elementUtil.GoToFrame("toc");
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(industryTypeLink);
-			elementUtil.clickElement(industryTypeapproveLink);
+		elementUtil.SHORT_TIMEOUT();
 
-			elementUtil.handlewin(driver);
+		return new CorporatePage(driver);
+	}// end of modifyIndustryType function
 
-			elementUtil.SHORT_TIMEOUT();
-			return new CorporatePage(driver);
-		}//end of approveIndustryType function
+	// Method to navigate to Industry Type->List
+	public CorporatePage listIndustryType() throws InterruptedException {
 
-		//Method to navigate to Industry Type->Modify
-		public CorporatePage modifyIndustryType() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(industryTypeLink);
+		elementUtil.clickElement(industryTypelistLink);
+		elementUtil.handlewin(driver);
 
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(industryTypeLink);
-			elementUtil.clickElement(industryTypeModifyLink);
-			elementUtil.handlewin(driver);
+		elementUtil.SHORT_TIMEOUT();
 
-			elementUtil.SHORT_TIMEOUT();
+		return new CorporatePage(driver);
+	}// end of listIndustryType function
 
-			return new CorporatePage(driver);
-		}//end of modifyIndustryType function
+	// Method to navigate to Industry Type->Delete
+	public CorporatePage deleteIndustryType() throws InterruptedException {
 
-		//Method to navigate to Industry Type->List
-		public CorporatePage listIndustryType() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(industryTypeLink);
+		elementUtil.clickElement(industryTypeDeleteLink);
+		elementUtil.handlewin(driver);
 
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(industryTypeLink);
-			elementUtil.clickElement(industryTypelistLink);
-			elementUtil.handlewin(driver);
+		elementUtil.SHORT_TIMEOUT();
 
-			elementUtil.SHORT_TIMEOUT();
+		return new CorporatePage(driver);
+	}// end of deleteIndustryType function
 
-			return new CorporatePage(driver);
-		}//end of listIndustryType function
+	// Method to navigate to Industry Type->Confirm Delete
+	public CorporatePage confirmDeleteIndustryType() throws InterruptedException {
 
-		//Method to navigate to Industry Type->Delete
-		public CorporatePage deleteIndustryType() throws InterruptedException {
+		elementUtil.GoToFrame("toc");
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(industryTypeLink);
+		elementUtil.clickElement(industryTypeConfirmDeleteLink);
 
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(industryTypeLink);
-			elementUtil.clickElement(industryTypeDeleteLink);
-			elementUtil.handlewin(driver);
+		elementUtil.handlewin(driver);
 
-			elementUtil.SHORT_TIMEOUT();
+		elementUtil.SHORT_TIMEOUT();
+		return new CorporatePage(driver);
+	}// end of confirmDeleteIndustryType function
 
-			return new CorporatePage(driver);
-		}//end of deleteIndustryType function
+	// ----------------- CORPORATE PAGE-> MISCELLANEOUS MENU
+	// METHODS----------------------
 
-		//Method to navigate to Industry Type->Confirm Delete
-		public CorporatePage confirmDeleteIndustryType() throws InterruptedException {
+	// Method to navigate to Miscellaneous->Add Menu
+	public CorporatePage addMiscellaneous() throws InterruptedException {
 
-			elementUtil.GoToFrame("toc");
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(industryTypeLink);
-			elementUtil.clickElement(industryTypeConfirmDeleteLink);
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(miscellaneousLink);
+		elementUtil.clickElement(miscellaneousAddLink);
 
-			elementUtil.handlewin(driver);
+		elementUtil.handlewin(driver);
 
-			elementUtil.SHORT_TIMEOUT();
-			return new CorporatePage(driver);
-		}//end of confirmDeleteIndustryType function
+		elementUtil.SHORT_TIMEOUT();
 
+		return new CorporatePage(driver);
+	}// end of addMiscellaneous function
 
-		//----------------- CORPORATE PAGE-> MISCELLANEOUS MENU METHODS----------------------
+	// Method to navigate to Miscellaneous->Approve Screen
+	public CorporatePage approveMiscellaneous() throws InterruptedException {
 
-		//Method to navigate to Miscellaneous->Add Menu
-		public CorporatePage addMiscellaneous() throws InterruptedException {
+		elementUtil.GoToFrame("toc");
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(miscellaneousLink);
+		elementUtil.clickElement(miscellaneousApproveLink);
 
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(miscellaneousLink);
-			elementUtil.clickElement(miscellaneousAddLink);
+		elementUtil.handlewin(driver);
 
-			elementUtil.handlewin(driver);
+		elementUtil.SHORT_TIMEOUT();
 
-			elementUtil.SHORT_TIMEOUT();
+		return new CorporatePage(driver);
 
-			return new CorporatePage(driver);
-		}//end of addMiscellaneous function
+	}// end of approveMiscellaneous function
 
-		//Method to navigate to Miscellaneous->Approve Screen
-		public CorporatePage approveMiscellaneous() throws InterruptedException {
+	// Method to navigate to Miscellaneous->Delete Menu
+	public CorporatePage deleteMiscellaneous() throws InterruptedException {
 
-			elementUtil.GoToFrame("toc");
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(miscellaneousLink);
-			elementUtil.clickElement(miscellaneousApproveLink);
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(miscellaneousLink);
+		elementUtil.clickElement(miscellaneousDeleteLink);
 
-			elementUtil.handlewin(driver);
+		elementUtil.handlewin(driver);
 
-			elementUtil.SHORT_TIMEOUT();
+		elementUtil.SHORT_TIMEOUT();
 
-			return new CorporatePage(driver);
+		return new CorporatePage(driver);
+	}// end of deleteMiscellaneous function
 
-		}//end of approveMiscellaneous function
+	// Method to navigate to Miscellaneous->Confirm Delete Menu
+	public CorporatePage confirmDeleteMiscellaneous() throws InterruptedException {
 
+		elementUtil.GoToFrame("toc");
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(miscellaneousLink);
+		elementUtil.clickElement(miscellaneousConfirmDeleteLink);
 
-		//Method to navigate to Miscellaneous->Delete Menu
-		public CorporatePage deleteMiscellaneous() throws InterruptedException {
+		elementUtil.handlewin(driver);
 
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(miscellaneousLink);
-			elementUtil.clickElement(miscellaneousDeleteLink);
+		elementUtil.SHORT_TIMEOUT();
 
-			elementUtil.handlewin(driver);
+		return new CorporatePage(driver);
+	}// end of deleteMiscellaneous function
 
-			elementUtil.SHORT_TIMEOUT();
+	// Method to navigate to Miscellaneous->Modify Menu
+	public CorporatePage modifyMiscellaneous() throws InterruptedException {
 
-			return new CorporatePage(driver);
-		}//end of deleteMiscellaneous function
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(miscellaneousLink);
+		elementUtil.clickElement(miscellaneousModifyLink);
 
-		//Method to navigate to Miscellaneous->Confirm Delete Menu
-		public CorporatePage confirmDeleteMiscellaneous() throws InterruptedException {
+		elementUtil.handlewin(driver);
 
-			elementUtil.GoToFrame("toc");
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(miscellaneousLink);
-			elementUtil.clickElement(miscellaneousConfirmDeleteLink);
+		elementUtil.SHORT_TIMEOUT();
 
-			elementUtil.handlewin(driver);
+		return new CorporatePage(driver);
+	}// end of modifyMiscellaneous function
 
-			elementUtil.SHORT_TIMEOUT();
+	// Method to navigate to Miscellaneous->List Menu
+	public CorporatePage ListMiscellaneous() throws InterruptedException {
 
-			return new CorporatePage(driver);
-		}//end of deleteMiscellaneous function
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(miscellaneousLink);
+		elementUtil.clickElement(miscellaneousListLink);
 
-		//Method to navigate to Miscellaneous->Modify Menu
-		public CorporatePage modifyMiscellaneous() throws InterruptedException {
+		elementUtil.handlewin(driver);
 
+		elementUtil.SHORT_TIMEOUT();
 
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(miscellaneousLink);
-			elementUtil.clickElement(miscellaneousModifyLink);
+		return new CorporatePage(driver);
+	}// end of modifyMiscellaneous function
 
-			elementUtil.handlewin(driver);
+	// ---------------------------CORPORATE PAGE->RELATIONSHIP MANAGER MENU
+	// METHODS-------------------------------------------
+	// Method to navigate to Relationship Manager->Add Menu
+	public CorporatePage relationshipManagerAddMenu() throws InterruptedException {
 
-			elementUtil.SHORT_TIMEOUT();
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(relationshipManagerLink);
+		elementUtil.clickElement(relationshipManagerAddLink);
 
-			return new CorporatePage(driver);
-		}//end of modifyMiscellaneous function
+		elementUtil.handlewin(driver);
 
-		//Method to navigate to Miscellaneous->List Menu
-		public CorporatePage ListMiscellaneous() throws InterruptedException {
+		elementUtil.SHORT_TIMEOUT();
 
+		return new CorporatePage(driver);
+	}// end of relationshipManagerAddMenu function
 
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(miscellaneousLink);
-			elementUtil.clickElement(miscellaneousListLink);
+	// Method to navigate to Relationship Manager->Approve Menu
+	public CorporatePage relationshipManagerApproveMenu() throws InterruptedException {
 
-			elementUtil.handlewin(driver);
+		elementUtil.GoToFrame("toc");
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(relationshipManagerLink);
+		elementUtil.clickElement(relationshipManagerApproveLink);
 
-			elementUtil.SHORT_TIMEOUT();
+		elementUtil.handlewin(driver);
 
-			return new CorporatePage(driver);
-		}//end of modifyMiscellaneous function
+		elementUtil.SHORT_TIMEOUT();
 
+		return new CorporatePage(driver);
+	}// end of relationshipManagerApproveMenu function
 
-		//---------------------------CORPORATE PAGE->RELATIONSHIP MANAGER MENU METHODS-------------------------------------------
-		//Method to navigate to Relationship Manager->Add Menu
-		public CorporatePage relationshipManagerAddMenu() throws InterruptedException {
+	// Method to navigate to Relationship Manager->Modify Menu
+	public CorporatePage relationshipManagerModifyMenu() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(relationshipManagerLink);
+		elementUtil.clickElement(relationshipManagerModifyLink);
 
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(relationshipManagerLink);
-			elementUtil.clickElement(relationshipManagerAddLink);
+		elementUtil.handlewin(driver);
 
-			elementUtil.handlewin(driver);
+		elementUtil.SHORT_TIMEOUT();
 
-			elementUtil.SHORT_TIMEOUT();
+		return new CorporatePage(driver);
+	}// end of relationshipManagerModifyMenu function
 
-			return new CorporatePage(driver);
-		}//end of relationshipManagerAddMenu function
+	// Method to navigate to Relationship Manager->Delete Menu
+	public CorporatePage relationshipManagerDeleteMenu() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(relationshipManagerLink);
+		elementUtil.clickElement(relationshipManagerDeleteLink);
 
-		//Method to navigate to Relationship Manager->Approve Menu
-		public CorporatePage relationshipManagerApproveMenu() throws InterruptedException {
+		elementUtil.handlewin(driver);
 
-			elementUtil.GoToFrame("toc");
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(relationshipManagerLink);
-			elementUtil.clickElement(relationshipManagerApproveLink);
+		elementUtil.SHORT_TIMEOUT();
 
-			elementUtil.handlewin(driver);
+		return new CorporatePage(driver);
+	}// end of relationshipManagerDeleteMenu function
 
-			elementUtil.SHORT_TIMEOUT();
+	// Method to navigate to Relationship Manager->Confirm Delete Menu
+	public CorporatePage relationshipManagerconfirmDeleteMenu() throws InterruptedException {
+		elementUtil.GoToFrame("toc");
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(relationshipManagerLink);
+		elementUtil.clickElement(relationshipManagerConfirmDeleteLink);
 
-			return new CorporatePage(driver);
-		}//end of relationshipManagerApproveMenu function
+		elementUtil.handlewin(driver);
 
-		//Method to navigate to Relationship Manager->Modify Menu
-		public CorporatePage relationshipManagerModifyMenu() throws InterruptedException {
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(relationshipManagerLink);
-			elementUtil.clickElement(relationshipManagerModifyLink);
+		elementUtil.SHORT_TIMEOUT();
 
-			elementUtil.handlewin(driver);
+		return new CorporatePage(driver);
+	}// end of relationshipManagerconfirmDeleteMenu function
 
-			elementUtil.SHORT_TIMEOUT();
+	// Method to navigate to Relationship Manager->List Menu
+	public CorporatePage relationshipManagerListMenu() throws InterruptedException {
 
-			return new CorporatePage(driver);
-		}//end of relationshipManagerModifyMenu function
+		// elementUtil.GoToFrame("toc");
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(relationshipManagerLink);
+		elementUtil.clickElement(relationshipManagerListLink);
 
-		//Method to navigate to Relationship Manager->Delete Menu
-		public CorporatePage relationshipManagerDeleteMenu() throws InterruptedException {
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(relationshipManagerLink);
-			elementUtil.clickElement(relationshipManagerDeleteLink);
+		elementUtil.handlewin(driver);
 
-			elementUtil.handlewin(driver);
+		elementUtil.SHORT_TIMEOUT();
 
-			elementUtil.SHORT_TIMEOUT();
-
-			return new CorporatePage(driver);
-		}//end of relationshipManagerDeleteMenu function
-
-		//Method to navigate to Relationship Manager->Confirm Delete Menu
-		public CorporatePage relationshipManagerconfirmDeleteMenu() throws InterruptedException {
-			elementUtil.GoToFrame("toc");
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(relationshipManagerLink);
-			elementUtil.clickElement(relationshipManagerConfirmDeleteLink);
-
-			elementUtil.handlewin(driver);
-
-			elementUtil.SHORT_TIMEOUT();
-
-			return new CorporatePage(driver);
-		}//end of relationshipManagerconfirmDeleteMenu function
-
-		//Method to navigate to Relationship Manager->List Menu
-		public CorporatePage relationshipManagerListMenu() throws InterruptedException {
-
-			//elementUtil.GoToFrame("toc");
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(relationshipManagerLink);
-			elementUtil.clickElement(relationshipManagerListLink);
-
-			elementUtil.handlewin(driver);
-
-			elementUtil.SHORT_TIMEOUT();
-
-			return new CorporatePage(driver);
-		}//end of relationshipManagerListMenu function
+		return new CorporatePage(driver);
+	}// end of relationshipManagerListMenu function
 		//
 
-		//---------------------------CORPORATE PAGE->CUSTOMER MENU METHODS-------------------------------------------
-		//Method to navigate to Customer->Add Menu
-		public CorporatePage customerAddMenu() throws InterruptedException {
+	// ---------------------------CORPORATE PAGE->CUSTOMER MENU
+	// METHODS-------------------------------------------
+	// Method to navigate to Customer->Add Menu
+	public CorporatePage customerAddMenu() throws InterruptedException {
 
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(customerLink);
-			elementUtil.clickElement(customerAddLink);
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(customerLink);
+		elementUtil.clickElement(customerAddLink);
 
-			elementUtil.handlewin(driver);
+		elementUtil.handlewin(driver);
 
-			elementUtil.SHORT_TIMEOUT();
+		elementUtil.SHORT_TIMEOUT();
 
-			return new CorporatePage(driver);
-		}//end of customerAddMenu function
+		return new CorporatePage(driver);
+	}// end of customerAddMenu function
 
-		//Method to navigate to Customer->Approve Menu
-		public CorporatePage customerApproveMenu() throws InterruptedException {
+	// Method to navigate to Customer->Approve Menu
+	public CorporatePage customerApproveMenu() throws InterruptedException {
 
-			elementUtil.GoToFrame("toc");
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(customerLink);
-			elementUtil.clickElement(customerApproveLink);
+		elementUtil.GoToFrame("toc");
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(customerLink);
+		elementUtil.clickElement(customerApproveLink);
 
-			elementUtil.handlewin(driver);
+		elementUtil.handlewin(driver);
 
-			elementUtil.SHORT_TIMEOUT();
+		elementUtil.SHORT_TIMEOUT();
 
-			return new CorporatePage(driver);
-		}//end of customerApproveMenu function
+		return new CorporatePage(driver);
+	}// end of customerApproveMenu function
 
-		//Method to navigate to Customer->Modify Menu
-		public CorporatePage customerrModifyMenu() throws InterruptedException {
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(customerLink);
-			elementUtil.clickElement(customerModifyLink);
+	// Method to navigate to Customer->Modify Menu
+	public CorporatePage customerrModifyMenu() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(customerLink);
+		elementUtil.clickElement(customerModifyLink);
 
-			elementUtil.handlewin(driver);
+		elementUtil.handlewin(driver);
 
-			elementUtil.SHORT_TIMEOUT();
+		elementUtil.SHORT_TIMEOUT();
 
-			return new CorporatePage(driver);
-		}//end of customerrModifyMenu function
+		return new CorporatePage(driver);
+	}// end of customerrModifyMenu function
 
-		//Method to navigate to Customer->Delete Menu
-		public CorporatePage customerDeleteMenu() throws InterruptedException {
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(customerLink);
-			elementUtil.clickElement(customerDeleteLink);
+	// Method to navigate to Customer->Delete Menu
+	public CorporatePage customerDeleteMenu() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(customerLink);
+		elementUtil.clickElement(customerDeleteLink);
 
-			elementUtil.handlewin(driver);
+		elementUtil.handlewin(driver);
 
-			elementUtil.SHORT_TIMEOUT();
+		elementUtil.SHORT_TIMEOUT();
 
-			return new CorporatePage(driver);
-		}//end of customerDeleteMenu function
+		return new CorporatePage(driver);
+	}// end of customerDeleteMenu function
 
-		//Method to navigate to Customer->Confirm Delete Menu
-		public CorporatePage customerconfirmDeleteMenu() throws InterruptedException {
-			elementUtil.GoToFrame("toc");
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(customerLink);
-			elementUtil.clickElement(customerConfirmDeleteLink);
+	// Method to navigate to Customer->Confirm Delete Menu
+	public CorporatePage customerconfirmDeleteMenu() throws InterruptedException {
+		elementUtil.GoToFrame("toc");
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(customerLink);
+		elementUtil.clickElement(customerConfirmDeleteLink);
 
-			elementUtil.handlewin(driver);
+		elementUtil.handlewin(driver);
 
-			elementUtil.SHORT_TIMEOUT();
+		elementUtil.SHORT_TIMEOUT();
 
-			return new CorporatePage(driver);
-		}//end of customerconfirmDeleteMenu function
+		return new CorporatePage(driver);
+	}// end of customerconfirmDeleteMenu function
 
-		//Method to navigate to Customer->List Menu
-		public CorporatePage customerListMenu() throws InterruptedException {
+	// Method to navigate to Customer->List Menu
+	public CorporatePage customerListMenu() throws InterruptedException {
 
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(customerLink);
-			elementUtil.clickElement(customerListLink);
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(customerLink);
+		elementUtil.clickElement(customerListLink);
 
-			elementUtil.handlewin(driver);
+		elementUtil.handlewin(driver);
 
-			elementUtil.SHORT_TIMEOUT();
+		elementUtil.SHORT_TIMEOUT();
 
-			return new CorporatePage(driver);
-		}//end of customerListMenu function
+		return new CorporatePage(driver);
+	}// end of customerListMenu function
 
-		//Method to navigate to Customer->Scheme/FormatCode Mapping Menu
-		public CorporatePage customerSchemeFormatCodeMappingMenu() throws InterruptedException {
+	// Method to navigate to Customer->Scheme/FormatCode Mapping Menu
+	public CorporatePage customerSchemeFormatCodeMappingMenu() throws InterruptedException {
 
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(customerLink);
-			elementUtil.clickElement(customer_SchemeFormatCdMappingLink);
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(customerLink);
+		elementUtil.clickElement(customer_SchemeFormatCdMappingLink);
 
-			elementUtil.handlewin(driver);
+		elementUtil.handlewin(driver);
 
-			elementUtil.SHORT_TIMEOUT();
+		elementUtil.SHORT_TIMEOUT();
 
-			return new CorporatePage(driver);
-		}//end of customerSchemeFormatCodeMappingMenu function
+		return new CorporatePage(driver);
+	}// end of customerSchemeFormatCodeMappingMenu function
 
-		//------------------------------SCHEME MENU METHODS-------------------------------------------
-		//Method to navigate to Scheme->Add Menu
-		public CorporatePage schemeAddMenu() throws InterruptedException {
+	// ------------------------------SCHEME MENU
+	// METHODS-------------------------------------------
+	// Method to navigate to Scheme->Add Menu
+	public CorporatePage schemeAddMenu() throws InterruptedException {
 
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(schemeMenuLink);
-			elementUtil.clickElement(schemeAddLink);
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(schemeMenuLink);
+		elementUtil.clickElement(schemeAddLink);
 
-			elementUtil.handlewin(driver);
+		elementUtil.handlewin(driver);
 
-			elementUtil.SHORT_TIMEOUT();
+		elementUtil.SHORT_TIMEOUT();
 
-			return new CorporatePage(driver);
-		}//end of schemeAddMenu function
+		return new CorporatePage(driver);
+	}// end of schemeAddMenu function
 
-		//Method to navigate to Scheme->Modify Menu
-		public CorporatePage schemeModifyMenu() throws InterruptedException {
+	// Method to navigate to Scheme->Modify Menu
+	public CorporatePage schemeModifyMenu() throws InterruptedException {
 
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(schemeMenuLink);
-			elementUtil.clickElement(schemeModifyLink);
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(schemeMenuLink);
+		elementUtil.clickElement(schemeModifyLink);
 
-			elementUtil.handlewin(driver);
+		elementUtil.handlewin(driver);
 
-			elementUtil.SHORT_TIMEOUT();
+		elementUtil.SHORT_TIMEOUT();
 
-			return new CorporatePage(driver);
-		}//end of schemeModifyMenu function
+		return new CorporatePage(driver);
+	}// end of schemeModifyMenu function
 
-		//Method to navigate to Scheme->Delete Menu
-		public CorporatePage schemeDeleteMenu() throws InterruptedException {
+	// Method to navigate to Scheme->Delete Menu
+	public CorporatePage schemeDeleteMenu() throws InterruptedException {
 
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(schemeMenuLink);
-			elementUtil.clickElement(schemeDeleteLink);
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(schemeMenuLink);
+		elementUtil.clickElement(schemeDeleteLink);
 
-			elementUtil.handlewin(driver);
+		elementUtil.handlewin(driver);
 
-			elementUtil.SHORT_TIMEOUT();
+		elementUtil.SHORT_TIMEOUT();
 
-			return new CorporatePage(driver);
-		}//end of schemeDeleteMenu function
+		return new CorporatePage(driver);
+	}// end of schemeDeleteMenu function
 
-		//Method to navigate to Scheme->ConfirmDelete Menu
-		public CorporatePage schemeConfirmDeleteMenu() throws InterruptedException {
+	// Method to navigate to Scheme->ConfirmDelete Menu
+	public CorporatePage schemeConfirmDeleteMenu() throws InterruptedException {
 
-			elementUtil.GoToFrame("toc");
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(schemeMenuLink);
-			elementUtil.clickElement(schemeConfirmDeleteLink);
+		elementUtil.GoToFrame("toc");
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(schemeMenuLink);
+		elementUtil.clickElement(schemeConfirmDeleteLink);
 
-			elementUtil.handlewin(driver);
+		elementUtil.handlewin(driver);
 
-			elementUtil.SHORT_TIMEOUT();
+		elementUtil.SHORT_TIMEOUT();
 
-			return new CorporatePage(driver);
-		}//end of schemeConfirmDeleteMenu function
+		return new CorporatePage(driver);
+	}// end of schemeConfirmDeleteMenu function
 
-		//Method to navigate to Scheme->Approve Menu
-		public CorporatePage schemeApproveMenu() throws InterruptedException {
+	// Method to navigate to Scheme->Approve Menu
+	public CorporatePage schemeApproveMenu() throws InterruptedException {
 
-			elementUtil.GoToFrame("toc");
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(schemeMenuLink);
-			elementUtil.clickElement(schemeApproveLink);
+		elementUtil.GoToFrame("toc");
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(schemeMenuLink);
+		elementUtil.clickElement(schemeApproveLink);
 
-			elementUtil.handlewin(driver);
+		elementUtil.handlewin(driver);
 
-			elementUtil.SHORT_TIMEOUT();
+		elementUtil.SHORT_TIMEOUT();
 
-			return new CorporatePage(driver);
-		}//end of schemeApprove function
+		return new CorporatePage(driver);
+	}// end of schemeApprove function
 
-		//Method to navigate to Scheme->List Menu
-		public CorporatePage schemeListMenu() throws InterruptedException {
+	// Method to navigate to Scheme->List Menu
+	public CorporatePage schemeListMenu() throws InterruptedException {
 
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(schemeMenuLink);
-			elementUtil.clickElement(schemeListLink);
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(schemeMenuLink);
+		elementUtil.clickElement(schemeListLink);
 
-			elementUtil.handlewin(driver);
+		elementUtil.handlewin(driver);
 
-			elementUtil.SHORT_TIMEOUT();
+		elementUtil.SHORT_TIMEOUT();
 
-			return new CorporatePage(driver);
-		}//end of schemeList function
-		
-		//------------------------------ACCOUNTING MENU METHODS-------------------------------------------
-				//Method to navigate to Accounting->Add Menu
-				public CorporatePage accountingAddMenu() throws InterruptedException {
+		return new CorporatePage(driver);
+	}// end of schemeList function
 
-					elementUtil.clickElement(applicationLink);
-					elementUtil.clickElement(maintenanceLink);
-					elementUtil.clickElement(corporateCMSlink);
-					elementUtil.clickElement(accountingLink);
-					elementUtil.clickElement(accountingaddLink);
+	// ------------------------------ACCOUNTING MENU
+	// METHODS-------------------------------------------
+	// Method to navigate to Accounting->Add Menu
+	public CorporatePage accountingAddMenu() throws InterruptedException {
 
-					elementUtil.handlewin(driver);
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(accountingLink);
+		elementUtil.clickElement(accountingaddLink);
 
-					elementUtil.SHORT_TIMEOUT();
+		elementUtil.handlewin(driver);
 
-					return new CorporatePage(driver);
-				}//end of accountingAddMenu function
+		elementUtil.SHORT_TIMEOUT();
 
-				//Method to navigate to Accounting->Modify Menu
-				public CorporatePage accountingModifyMenu() throws InterruptedException {
+		return new CorporatePage(driver);
+	}// end of accountingAddMenu function
 
-					elementUtil.clickElement(applicationLink);
-					elementUtil.clickElement(maintenanceLink);
-					elementUtil.clickElement(corporateCMSlink);
-					elementUtil.clickElement(accountingLink);
-					elementUtil.clickElement(accountingModifyLink);
+	// Method to navigate to Accounting->Modify Menu
+	public CorporatePage accountingModifyMenu() throws InterruptedException {
 
-					elementUtil.handlewin(driver);
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(accountingLink);
+		elementUtil.clickElement(accountingModifyLink);
 
-					elementUtil.SHORT_TIMEOUT();
+		elementUtil.handlewin(driver);
 
-					return new CorporatePage(driver);
-				}//end of accountingModifyMenu function
+		elementUtil.SHORT_TIMEOUT();
 
-				//Method to navigate to Accounting->Delete Menu
-				public CorporatePage accountingDeleteMenu() throws InterruptedException {
+		return new CorporatePage(driver);
+	}// end of accountingModifyMenu function
 
-					elementUtil.clickElement(applicationLink);
-					elementUtil.clickElement(maintenanceLink);
-					elementUtil.clickElement(corporateCMSlink);
-					elementUtil.clickElement(accountingLink);
-					elementUtil.clickElement(accountingDeleteLink);
+	// Method to navigate to Accounting->Delete Menu
+	public CorporatePage accountingDeleteMenu() throws InterruptedException {
 
-					elementUtil.handlewin(driver);
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(accountingLink);
+		elementUtil.clickElement(accountingDeleteLink);
 
-					elementUtil.SHORT_TIMEOUT();
+		elementUtil.handlewin(driver);
 
-					return new CorporatePage(driver);
-				}//end of accountingDeleteMenu function
+		elementUtil.SHORT_TIMEOUT();
 
-				//Method to navigate to Accounting->ConfirmDelete Menu
-				public CorporatePage accountingConfirmDeleteMenu() throws InterruptedException {
+		return new CorporatePage(driver);
+	}// end of accountingDeleteMenu function
 
-					elementUtil.GoToFrame("toc");
-					elementUtil.clickElement(applicationLink);
-					elementUtil.clickElement(maintenanceLink);
-					elementUtil.clickElement(corporateCMSlink);
-					elementUtil.clickElement(accountingLink);
-					elementUtil.clickElement(accountingConfirmDeleteLink);
+	// Method to navigate to Accounting->ConfirmDelete Menu
+	public CorporatePage accountingConfirmDeleteMenu() throws InterruptedException {
 
-					elementUtil.handlewin(driver);
+		elementUtil.GoToFrame("toc");
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(accountingLink);
+		elementUtil.clickElement(accountingConfirmDeleteLink);
 
-					elementUtil.SHORT_TIMEOUT();
+		elementUtil.handlewin(driver);
 
-					return new CorporatePage(driver);
-				}//end of accountingConfirmDeleteMenu function
+		elementUtil.SHORT_TIMEOUT();
 
-				//Method to navigate to Accounting->Approve Menu
-				public CorporatePage accountingApproveMenu() throws InterruptedException {
+		return new CorporatePage(driver);
+	}// end of accountingConfirmDeleteMenu function
 
-					elementUtil.GoToFrame("toc");
-					elementUtil.clickElement(applicationLink);
-					elementUtil.clickElement(maintenanceLink);
-					elementUtil.clickElement(corporateCMSlink);
-					elementUtil.clickElement(accountingLink);
-					elementUtil.clickElement(accountingapproveLink);
+	// Method to navigate to Accounting->Approve Menu
+	public CorporatePage accountingApproveMenu() throws InterruptedException {
 
-					elementUtil.handlewin(driver);
+		elementUtil.GoToFrame("toc");
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(accountingLink);
+		elementUtil.clickElement(accountingapproveLink);
 
-					elementUtil.SHORT_TIMEOUT();
+		elementUtil.handlewin(driver);
 
-					return new CorporatePage(driver);
-				}//end of accountingApprove function
+		elementUtil.SHORT_TIMEOUT();
 
-				//Method to navigate to Accounting->List Menu
-				public CorporatePage accountingListMenu() throws InterruptedException {
+		return new CorporatePage(driver);
+	}// end of accountingApprove function
 
-					elementUtil.clickElement(applicationLink);
-					elementUtil.clickElement(maintenanceLink);
-					elementUtil.clickElement(corporateCMSlink);
-					elementUtil.clickElement(accountingLink);
-					elementUtil.clickElement(accountingviewLink);
+	// Method to navigate to Accounting->List Menu
+	public CorporatePage accountingListMenu() throws InterruptedException {
 
-					elementUtil.handlewin(driver);
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(accountingLink);
+		elementUtil.clickElement(accountingviewLink);
 
-					elementUtil.SHORT_TIMEOUT();
+		elementUtil.handlewin(driver);
 
-					return new CorporatePage(driver);
-				}//end of accountingList function
+		elementUtil.SHORT_TIMEOUT();
+
+		return new CorporatePage(driver);
+	}// end of accountingList function
 
 	// -----------Close Ack Window-----------//
 	public void closeackwindow() {
@@ -1619,84 +1616,84 @@ public class HomePage {
 			System.out.println("Ack Window closed");
 		}
 	}
-	
-	//----------------- CORPORATE PAGE-> DUPLICATE CHECK METHODS----------------------
 
-			//Method to navigate to Duplicate Check->Add Menu
-			public CorporatePage clickonDuplicateCheckAddLink() throws InterruptedException {
-				elementUtil.clickElement(applicationLink);
-				elementUtil.clickElement(maintenanceLink);
-				elementUtil.clickElement(corporateCMSlink);
-				elementUtil.clickElement(duplicateCheckLink);
-				elementUtil.clickElement(duplicateCheckAddLink);
-				elementUtil.handlewin(driver);
-				elementUtil.SHORT_TIMEOUT();
-				return new CorporatePage(driver);
-			}
-			
-			//Method to navigate to Duplicate Check->List Menu
-			public CorporatePage clickonDuplicateCheckListLink() throws InterruptedException {
-				elementUtil.clickElement(applicationLink);
-				elementUtil.clickElement(maintenanceLink);
-				elementUtil.clickElement(corporateCMSlink);
-				elementUtil.clickElement(duplicateCheckLink);
-				elementUtil.clickElement(duplicateCheckListLink);
-				elementUtil.handlewin(driver);
-				elementUtil.SHORT_TIMEOUT();
-				return new CorporatePage(driver);
-			}
-			
-			//Method to navigate to Duplicate Check->Approve Menu
-			public CorporatePage clickonDuplicateCheckApproveLink() throws InterruptedException {
-				elementUtil.GoToFrame("toc");
-				elementUtil.clickElement(applicationLink);
-				elementUtil.clickElement(maintenanceLink);
-				elementUtil.clickElement(corporateCMSlink);
-				elementUtil.clickElement(duplicateCheckLink);
-				elementUtil.clickElement(duplicateCheckApproveLink);
-				elementUtil.handlewin(driver);
-				elementUtil.SHORT_TIMEOUT();
-				return new CorporatePage(driver);
-			}
-			
-			//Method to navigate to Duplicate Check->Modify Menu
-			public CorporatePage clickonDuplicateCheckModifyLink() throws InterruptedException {
-				elementUtil.clickElement(applicationLink);
-				elementUtil.clickElement(maintenanceLink);
-				elementUtil.clickElement(corporateCMSlink);
-				elementUtil.clickElement(duplicateCheckLink);
-				elementUtil.clickElement(duplicateCheckModifyLink);
-				elementUtil.handlewin(driver);
-				elementUtil.SHORT_TIMEOUT();
-				return new CorporatePage(driver);
-			}
-			
-			//Method to navigate to Duplicate Check->Delete Menu
-			public CorporatePage clickonDuplicateCheckDeleteLink() throws InterruptedException {
-				elementUtil.clickElement(applicationLink);
-				elementUtil.clickElement(maintenanceLink);
-				elementUtil.clickElement(corporateCMSlink);
-				elementUtil.clickElement(duplicateCheckLink);
-				elementUtil.clickElement(duplicateCheckDeleteLink);
-				elementUtil.handlewin(driver);
-				elementUtil.SHORT_TIMEOUT();
-				return new CorporatePage(driver);
-			}
-			
-			//Method to navigate to Duplicate Check->Confirm Delete Menu
-			public CorporatePage clickonDuplicateCheckConfirmDeleteLink() throws InterruptedException {
-				elementUtil.GoToFrame("toc");
-				elementUtil.clickElement(applicationLink);
-				elementUtil.clickElement(maintenanceLink);
-				elementUtil.clickElement(corporateCMSlink);
-				elementUtil.clickElement(duplicateCheckLink);
-				elementUtil.clickElement(duplicateCheckConfirmDeleteLink);
-				elementUtil.handlewin(driver);
-				elementUtil.SHORT_TIMEOUT();
-				return new CorporatePage(driver);
-			}
-	
-	
+	// ----------------- CORPORATE PAGE-> DUPLICATE CHECK
+	// METHODS----------------------
+
+	// Method to navigate to Duplicate Check->Add Menu
+	public CorporatePage clickonDuplicateCheckAddLink() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(duplicateCheckLink);
+		elementUtil.clickElement(duplicateCheckAddLink);
+		elementUtil.handlewin(driver);
+		elementUtil.SHORT_TIMEOUT();
+		return new CorporatePage(driver);
+	}
+
+	// Method to navigate to Duplicate Check->List Menu
+	public CorporatePage clickonDuplicateCheckListLink() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(duplicateCheckLink);
+		elementUtil.clickElement(duplicateCheckListLink);
+		elementUtil.handlewin(driver);
+		elementUtil.SHORT_TIMEOUT();
+		return new CorporatePage(driver);
+	}
+
+	// Method to navigate to Duplicate Check->Approve Menu
+	public CorporatePage clickonDuplicateCheckApproveLink() throws InterruptedException {
+		elementUtil.GoToFrame("toc");
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(duplicateCheckLink);
+		elementUtil.clickElement(duplicateCheckApproveLink);
+		elementUtil.handlewin(driver);
+		elementUtil.SHORT_TIMEOUT();
+		return new CorporatePage(driver);
+	}
+
+	// Method to navigate to Duplicate Check->Modify Menu
+	public CorporatePage clickonDuplicateCheckModifyLink() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(duplicateCheckLink);
+		elementUtil.clickElement(duplicateCheckModifyLink);
+		elementUtil.handlewin(driver);
+		elementUtil.SHORT_TIMEOUT();
+		return new CorporatePage(driver);
+	}
+
+	// Method to navigate to Duplicate Check->Delete Menu
+	public CorporatePage clickonDuplicateCheckDeleteLink() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(duplicateCheckLink);
+		elementUtil.clickElement(duplicateCheckDeleteLink);
+		elementUtil.handlewin(driver);
+		elementUtil.SHORT_TIMEOUT();
+		return new CorporatePage(driver);
+	}
+
+	// Method to navigate to Duplicate Check->Confirm Delete Menu
+	public CorporatePage clickonDuplicateCheckConfirmDeleteLink() throws InterruptedException {
+		elementUtil.GoToFrame("toc");
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(duplicateCheckLink);
+		elementUtil.clickElement(duplicateCheckConfirmDeleteLink);
+		elementUtil.handlewin(driver);
+		elementUtil.SHORT_TIMEOUT();
+		return new CorporatePage(driver);
+	}
+
 	// ----------------------Schedule Menu Methods--------------------------------//
 
 	// --------Method to reach to Schedule New Link---------//
@@ -1742,94 +1739,122 @@ public class HomePage {
 		elementUtil.SHORT_TIMEOUT();
 		return new SchedulePage(driver);
 	}
-	
-	// ----------------------Name Matching Menu Methods--------------------------------//
 
-		// --------Method to reach to Name Matching List Link---------//
-		public NameMatchingPage clickonNameMatchingListLink() throws InterruptedException {
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(nameMatchingLink);
-			elementUtil.clickElement(nameMatchingListLink);
-			elementUtil.handlewin(driver);
-			elementUtil.SHORT_TIMEOUT();
-			return new NameMatchingPage(driver);
-		}
-		
-		// --------Method to reach to Name Matching Add Link---------//
-		public NameMatchingPage clickonNameMatchingAddLink() throws InterruptedException {
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(nameMatchingLink);
-			elementUtil.clickElement(nameMatchingAddLink);
-			elementUtil.handlewin(driver);
-			elementUtil.SHORT_TIMEOUT();
-			return new NameMatchingPage(driver);
-		}
-	
-		// --------Method to reach to Name Matching Modify Link---------//
-		public NameMatchingPage clickonNameMatchingModifyLink() throws InterruptedException {
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(nameMatchingLink);
-			elementUtil.clickElement(nameMatchingModifyLink);
-			elementUtil.handlewin(driver);
-			elementUtil.SHORT_TIMEOUT();
-			return new NameMatchingPage(driver);
-		}
-		
-		// --------Method to reach to Name Matching Delete Link---------//
-		public NameMatchingPage clickonNameMatchingDeleteLink() throws InterruptedException {
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(nameMatchingLink);
-			elementUtil.clickElement(nameMatchingDeleteLink);
-			elementUtil.handlewin(driver);
-			elementUtil.SHORT_TIMEOUT();
-			return new NameMatchingPage(driver);
-		}
-		
-		// ----------------------Mode Of Operation Menu Methods--------------------------------//
+	// ----------------------Name Matching Menu
+	// Methods--------------------------------//
 
-		// --------Method to reach to Mode Of Operation List Link---------//
-		public CorporatePage clickonModeOfOperationListLink() throws InterruptedException {
-			elementUtil.clickElement(applicationLink);
-			elementUtil.clickElement(maintenanceLink);
-			elementUtil.clickElement(corporateCMSlink);
-			elementUtil.clickElement(modeOfOperationLink);
-			elementUtil.clickElement(modeOfOperationListLink);
-			elementUtil.handlewin(driver);
-			return new CorporatePage(driver);
-		}
-		
-		// --------Method to reach to Mode Of Operation Add Link---------//
-				public void clickonModeOfOperationAddLink() throws InterruptedException {
-					elementUtil.clickElement(applicationLink);
-					elementUtil.clickElement(maintenanceLink);
-					elementUtil.clickElement(corporateCMSlink);
-					elementUtil.clickElement(modeOfOperationLink);
-					elementUtil.clickElement(modeOfOperationAddLink);
-					
-				}
-				
-				// --------Method to reach to Mode Of Operation Approve Link---------//
-				public void clickonModeOfOperationApproveLink() throws InterruptedException {
-					elementUtil.clickElement(applicationLink);
-					elementUtil.clickElement(maintenanceLink);
-					elementUtil.clickElement(corporateCMSlink);
-					elementUtil.clickElement(modeOfOperationLink);
-					elementUtil.clickElement(modeOfOperationApproveLink);
-					
-				}
+	// --------Method to reach to Name Matching List Link---------//
+	public NameMatchingPage clickonNameMatchingListLink() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(nameMatchingLink);
+		elementUtil.clickElement(nameMatchingListLink);
+		elementUtil.handlewin(driver);
+		elementUtil.SHORT_TIMEOUT();
+		return new NameMatchingPage(driver);
+	}
 
-		
-		
-		
-		
-		
-		
-	
-	
+	// --------Method to reach to Name Matching Add Link---------//
+	public NameMatchingPage clickonNameMatchingAddLink() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(nameMatchingLink);
+		elementUtil.clickElement(nameMatchingAddLink);
+		elementUtil.handlewin(driver);
+		elementUtil.SHORT_TIMEOUT();
+		return new NameMatchingPage(driver);
+	}
+
+	// --------Method to reach to Name Matching Modify Link---------//
+	public NameMatchingPage clickonNameMatchingModifyLink() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(nameMatchingLink);
+		elementUtil.clickElement(nameMatchingModifyLink);
+		elementUtil.handlewin(driver);
+		elementUtil.SHORT_TIMEOUT();
+		return new NameMatchingPage(driver);
+	}
+
+	// --------Method to reach to Name Matching Delete Link---------//
+	public NameMatchingPage clickonNameMatchingDeleteLink() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(nameMatchingLink);
+		elementUtil.clickElement(nameMatchingDeleteLink);
+		elementUtil.handlewin(driver);
+		elementUtil.SHORT_TIMEOUT();
+		return new NameMatchingPage(driver);
+	}
+
+	// ----------------------Mode Of Operation Menu
+	// Methods--------------------------------//
+
+	// --------Method to reach to Mode Of Operation List Link---------//
+	public CorporatePage clickonModeOfOperationListLink() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(modeOfOperationLink);
+		elementUtil.clickElement(modeOfOperationListLink);
+		elementUtil.handlewin(driver);
+		return new CorporatePage(driver);
+	}
+
+	// --------Method to reach to Mode Of Operation Add Link---------//
+	public CorporatePage clickonModeOfOperationAddLink() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(modeOfOperationLink);
+		elementUtil.clickElement(modeOfOperationAddLink);
+		elementUtil.handlewin(driver);
+		return new CorporatePage(driver);
+	}
+
+	// --------Method to reach to Mode Of Operation Approve Link---------//
+	public CorporatePage clickonModeOfOperationApproveLink() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(modeOfOperationLink);
+		elementUtil.clickElement(modeOfOperationApproveLink);
+		elementUtil.handlewin(driver);
+		return new CorporatePage(driver);
+	}
+
+	// --------Method to reach to Mode Of Operation Modify Link---------//
+	public CorporatePage clickonModeOfOperationModifyLink() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(modeOfOperationLink);
+		elementUtil.clickElement(modeOfOperationModifyLink);
+		elementUtil.handlewin(driver);
+		return new CorporatePage(driver);
+	}
+
+	// --------Method to reach to Mode Of Operation Delete Link---------//
+	public CorporatePage clickonModeOfOperationDeleteLink() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(modeOfOperationLink);
+		elementUtil.clickElement(modeOfOperationDeleteLink);
+		elementUtil.handlewin(driver);
+		return new CorporatePage(driver);
+	}
+
+	// --------Method to reach to Mode Of Operation Confirm Delete Link---------//
+	public CorporatePage clickonModeOfOperationConfirmDeleteLink() throws InterruptedException {
+		elementUtil.clickElement(applicationLink);
+		elementUtil.clickElement(maintenanceLink);
+		elementUtil.clickElement(corporateCMSlink);
+		elementUtil.clickElement(modeOfOperationLink);
+		elementUtil.clickElement(modeOfOperationConfirmDeleteLink);
+		elementUtil.handlewin(driver);
+		return new CorporatePage(driver);
+	}
 
 	// -------------Sponsor Mandate------------//
 	// ------------Upload Mandate File---------------//
